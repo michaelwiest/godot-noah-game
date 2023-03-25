@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://du3iimmankr6v"]
+
+[ext_resource type="Script" path="res://scripts/core/boxes/hurtbox.gd" id="1_7xx3e"]
+
+[node name="hurtbox" type="Area2D"]
+script = ExtResource("1_7xx3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HitTimer" type="Timer" parent="."]
+
+[node name="InvincibilityTimer" type="Timer" parent="."]

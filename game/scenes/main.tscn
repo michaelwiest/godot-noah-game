@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcnfrlh0vb6rv"]
+
+[ext_resource type="PackedScene" uid="uid://yvhrt3r6aggi" path="res://scenes/player/player.tscn" id="1_jgtet"]
+[ext_resource type="Texture2D" uid="uid://doxihvs4301fc" path="res://assets/environment/grass.png" id="1_nm6oi"]
+[ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="2_cseyw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbkki"]
+size = Vector2(12, 12)
+
+[node name="World" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_jgtet")]
+position = Vector2(120, 88)
+max_speed = 100.0
+acceleration = 50.0
+
+[node name="Sprite2D" parent="player" index="0"]
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cseyw")
+
+[node name="CollisionShape2D" parent="player" index="1"]
+shape = SubResource("RectangleShape2D_pbkki")
+debug_color = Color(0.85098, 0.262745, 0.67451, 0.658824)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("1_nm6oi")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 320, 320)
+
+[editable path="player"]
