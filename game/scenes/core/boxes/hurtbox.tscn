@@ -10,3 +10,5 @@ script = ExtResource("1_7xx3e")
 [node name="HitTimer" type="Timer" parent="."]
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

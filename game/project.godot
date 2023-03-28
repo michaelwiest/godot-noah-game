@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=320
+window/size/viewport_width=240
+window/size/viewport_height=240
 window/size/window_width_override=1280
 window/size/window_height_override=1280
 window/stretch/mode="canvas_items"
@@ -36,3 +36,7 @@ enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg")
 2d_physics/layer_5="player_hitbox"
 2d_physics/layer_6="enemy_hurtbox"
 2d_physics/layer_7="enemy_hitbox"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

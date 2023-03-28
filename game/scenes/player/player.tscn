@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://yvhrt3r6aggi"]
+[gd_scene load_steps=4 format=3 uid="uid://yvhrt3r6aggi"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_6nayg"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
+[ext_resource type="PackedScene" uid="uid://du3iimmankr6v" path="res://scenes/core/boxes/hurtbox.tscn" id="3_bgiql"]
 
 [node name="Entity" instance=ExtResource("1_6nayg")]
 script = ExtResource("1_wyaxs")
+
+[node name="hurtbox" parent="." index="2" instance=ExtResource("3_bgiql")]
