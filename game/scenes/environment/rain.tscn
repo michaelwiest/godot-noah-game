@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5cl64xqqadev"]
+
+[ext_resource type="Texture2D" uid="uid://d0axlijowk4fn" path="res://assets/environment/rain.png" id="1_300og"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lv0cs"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="rain" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_lv0cs")
+amount = 24
+randomness = 0.08
+lifetime_randomness = 0.09
+texture = ExtResource("1_300og")
+emission_shape = 3
+emission_rect_extents = Vector2(240, 1)
+direction = Vector2(1, 2.08165e-12)
+spread = 75.0
+anim_speed_min = 1.0
+anim_speed_max = 1.94

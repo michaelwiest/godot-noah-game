@@ -12,12 +12,9 @@ shader_parameter/show = false
 radius = 6.0
 height = 14.0
 
-[node name="Crab" node_paths=PackedStringArray("stats") instance=ExtResource("1_xu68e")]
+[node name="Crab" node_paths=PackedStringArray("stats", "effect_player") instance=ExtResource("1_xu68e")]
 stats = NodePath("stats")
-mass = 1.0
-max_speed = 10.0
-friction = 5.0
-acceleration = 5.0
+effect_player = NodePath("EffectPlayer")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_o2ce5")

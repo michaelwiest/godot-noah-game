@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var stick: Weapon = $player/stick
+@onready var stick: Weapon = $Player/stick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

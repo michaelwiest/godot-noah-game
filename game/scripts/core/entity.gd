@@ -7,7 +7,7 @@ class_name Entity
 @export var friction: float = 5.0
 @export var acceleration: float = 5.0
 
-@onready var effect_player: AnimationPlayer = $EffectPlayer
+@export var effect_player: AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.

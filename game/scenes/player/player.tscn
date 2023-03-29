@@ -4,15 +4,16 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
 [ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="3_wuvgd"]
 
-[node name="Entity" instance=ExtResource("1_6nayg")]
+[node name="Player" instance=ExtResource("1_6nayg")]
 script = ExtResource("1_wyaxs")
 mass = 1.0
-max_speed = 10.0
-friction = 10.0
-acceleration = 5.0
+max_speed = 100.0
+friction = 50.0
+acceleration = 50.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_wuvgd")
 
 [node name="stats" parent="." index="2"]
