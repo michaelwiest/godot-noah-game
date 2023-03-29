@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/core/entity.gd" id="1_7v2ab"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_6ilka"]
-[ext_resource type="PackedScene" uid="uid://cccwfxwywxb2u" path="res://scenes/core/stats.tscn" id="2_rr1vh"]
+[ext_resource type="Script" path="res://scripts/core/stats.gd" id="3_4vvfo"]
 [ext_resource type="PackedScene" uid="uid://du3iimmankr6v" path="res://scenes/core/boxes/hurtbox.tscn" id="3_86iny"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ps411"]
+resource_local_to_scene = true
 shader = ExtResource("2_6ilka")
-shader_parameter/show = false
+shader_parameter/show = true
 
 [sub_resource type="Animation" id="Animation_81iwt"]
 length = 0.001
@@ -53,7 +54,8 @@ material = SubResource("ShaderMaterial_ps411")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="stats" parent="." instance=ExtResource("2_rr1vh")]
+[node name="stats" type="Node2D" parent="."]
+script = ExtResource("3_4vvfo")
 max_health = 1
 current_health = 1
 

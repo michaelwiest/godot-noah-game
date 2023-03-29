@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dp53enc6h0tyk" path="res://assets/animals/crab.png" id="2_lj56k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2ce5"]
+resource_local_to_scene = true
 shader = ExtResource("2_db7b7")
-shader_parameter/show = false
+shader_parameter/show = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0k37"]
 radius = 6.0

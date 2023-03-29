@@ -5,18 +5,15 @@
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="3_gon3v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4deqj"]
+resource_local_to_scene = true
 shader = ExtResource("3_gon3v")
-shader_parameter/show = false
+shader_parameter/show = true
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wqyb6"]
 
 [node name="Enemy" node_paths=PackedStringArray("stats") instance=ExtResource("1_krsvd")]
 script = ExtResource("2_lv7re")
 stats = NodePath("")
-mass = 1.0
-max_speed = 10.0
-friction = 5.0
-acceleration = 5.0
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_4deqj")
