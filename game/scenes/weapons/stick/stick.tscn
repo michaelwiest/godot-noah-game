@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0q6qet3iwckw"]
+[gd_scene load_steps=8 format=3 uid="uid://0q6qet3iwckw"]
 
 [ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="1_livky"]
 [ext_resource type="Script" path="res://scenes/weapons/stick/stick.gd" id="3_hap66"]
 [ext_resource type="Texture2D" uid="uid://ceuk1pt55atff" path="res://assets/weapons/stick/stick.png" id="3_shaov"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_khlmt"]
-size = Vector2(6, 13)
 
 [sub_resource type="Animation" id="Animation_d5hrt"]
 resource_name = "use"
@@ -76,7 +73,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" parent="HeldHitbox" index="0"]
 position = Vector2(-1, -1.5)
-shape = SubResource("RectangleShape2D_khlmt")
 
 [node name="HeldSprite" parent="." index="1"]
 texture = ExtResource("3_shaov")

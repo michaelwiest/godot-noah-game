@@ -18,7 +18,6 @@ script = ExtResource("1_cky74")
 [node name="player" parent="." instance=ExtResource("1_jgtet")]
 z_index = 1
 position = Vector2(120, 88)
-mass = 1.0
 max_speed = 100.0
 acceleration = 50.0
 
@@ -61,3 +60,6 @@ position = Vector2(172, 90)
 
 [editable path="player"]
 [editable path="player/hurtbox"]
+[editable path="player/stick"]
+[editable path="player/stick/HeldHitbox"]
+[editable path="player/stick/Marker2D/UseHitbox"]

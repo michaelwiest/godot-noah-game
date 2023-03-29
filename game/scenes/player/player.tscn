@@ -6,7 +6,10 @@
 
 [node name="Entity" instance=ExtResource("1_6nayg")]
 script = ExtResource("1_wyaxs")
+mass = 1.0
+max_speed = 10.0
 friction = 10.0
+acceleration = 5.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
