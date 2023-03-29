@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg")
 2d_physics/layer_5="player_hitbox"
 2d_physics/layer_6="enemy_hurtbox"
 2d_physics/layer_7="enemy_hitbox"
+2d_physics/layer_8="enemy"
 
 [rendering]
 

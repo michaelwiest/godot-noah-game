@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ps411"]
 resource_local_to_scene = true
 shader = ExtResource("2_6ilka")
-shader_parameter/show = true
+shader_parameter/show = false
 
 [sub_resource type="Animation" id="Animation_81iwt"]
 length = 0.001

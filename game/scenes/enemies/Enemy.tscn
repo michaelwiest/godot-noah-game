@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4deqj"]
 resource_local_to_scene = true
 shader = ExtResource("3_gon3v")
-shader_parameter/show = true
+shader_parameter/show = false
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wqyb6"]
 

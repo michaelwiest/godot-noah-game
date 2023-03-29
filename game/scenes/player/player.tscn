@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://yvhrt3r6aggi"]
+[gd_scene load_steps=7 format=3 uid="uid://yvhrt3r6aggi"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_6nayg"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
@@ -10,7 +10,11 @@ resource_local_to_scene = true
 shader = ExtResource("3_q1jv1")
 shader_parameter/show = false
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u3kh"]
+size = Vector2(12, 12)
+
 [node name="Player" instance=ExtResource("1_6nayg")]
+collision_mask = 133
 script = ExtResource("1_wyaxs")
 max_speed = 100.0
 friction = 50.0
@@ -21,6 +25,9 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_k5fwv")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_wuvgd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_8u3kh")
 
 [node name="stats" parent="." index="2"]
 max_health = 5

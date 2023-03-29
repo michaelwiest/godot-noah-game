@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl27yhnnxxnq4"]
+[gd_scene load_steps=7 format=3 uid="uid://dl27yhnnxxnq4"]
 
 [ext_resource type="PackedScene" uid="uid://drt7464ggh317" path="res://scenes/enemies/Enemy.tscn" id="1_xu68e"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_db7b7"]
@@ -7,19 +7,27 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2ce5"]
 resource_local_to_scene = true
 shader = ExtResource("2_db7b7")
-shader_parameter/show = true
+shader_parameter/show = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrjwy"]
+size = Vector2(14, 14)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0k37"]
 radius = 6.0
 height = 14.0
 
 [node name="Crab" node_paths=PackedStringArray("stats", "effect_player") instance=ExtResource("1_xu68e")]
+collision_layer = 128
+collision_mask = 133
 stats = NodePath("stats")
 effect_player = NodePath("EffectPlayer")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_o2ce5")
 texture = ExtResource("2_lj56k")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_vrjwy")
 
 [node name="stats" parent="." index="2"]
 max_health = 5
