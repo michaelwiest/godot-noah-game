@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl27yhnnxxnq4"]
+
+[ext_resource type="PackedScene" uid="uid://drt7464ggh317" path="res://scenes/enemies/Enemy.tscn" id="1_xu68e"]
+[ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_db7b7"]
+[ext_resource type="Texture2D" uid="uid://dp53enc6h0tyk" path="res://assets/animals/crab.png" id="2_lj56k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2ce5"]
+shader = ExtResource("2_db7b7")
+shader_parameter/show = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0k37"]
+radius = 6.0
+height = 14.0
+
+[node name="Crab" node_paths=PackedStringArray("stats") instance=ExtResource("1_xu68e")]
+stats = NodePath("stats")
+mass = 1.0
+max_speed = 10.0
+friction = 5.0
+acceleration = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_o2ce5")
+texture = ExtResource("2_lj56k")
+
+[node name="stats" parent="." index="2"]
+max_health = 5
+current_health = 5
+
+[node name="hurtbox" parent="." index="4"]
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_m0k37")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[editable path="hurtbox"]
