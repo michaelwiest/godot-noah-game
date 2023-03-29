@@ -1,9 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://0q6qet3iwckw"]
 
-[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="1_livky"]
+[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="1_livky"]
 [ext_resource type="Script" path="res://scenes/weapons/stick/stick.gd" id="3_hap66"]
 [ext_resource type="Texture2D" uid="uid://ceuk1pt55atff" path="res://assets/weapons/stick/stick.png" id="3_shaov"]
-[ext_resource type="Texture2D" uid="uid://bu4vucci8g3ra" path="res://assets/weapons/stick/sprite_swing.png" id="3_w4jc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khlmt"]
 size = Vector2(6, 13)
@@ -63,8 +62,13 @@ _data = {
 radius = 4.0
 height = 16.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_er3jc"]
+load_path = "res://.godot/imported/sprite_swing.png-f2917ccf8a78f83fa6ecaf1b70851c16.ctex"
+
 [node name="stick" instance=ExtResource("1_livky")]
 script = ExtResource("3_hap66")
+force = 100.0
+damage = 1.0
 
 [node name="HeldHitbox" parent="." index="0"]
 collision_layer = 16
@@ -89,6 +93,8 @@ gizmo_extents = 194.2
 
 [node name="UseHitbox" parent="Marker2D" index="0"]
 position = Vector2(0, -1)
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" parent="Marker2D/UseHitbox" index="0"]
 position = Vector2(2.08025e-12, -4)
@@ -96,7 +102,7 @@ shape = SubResource("CapsuleShape2D_he3wk")
 
 [node name="UseSprite" parent="." index="4"]
 position = Vector2(5, 4)
-texture = ExtResource("3_w4jc3")
+texture = SubResource("CompressedTexture2D_er3jc")
 hframes = 3
 frame = 2
 

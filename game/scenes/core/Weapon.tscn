@@ -28,3 +28,8 @@ libraries = {
 [node name="UseHitbox" parent="Marker2D" instance=ExtResource("2_wp53t")]
 
 [node name="UseSprite" type="Sprite2D" parent="."]
+
+[connection signal="apply_damage_signal" from="HeldHitbox" to="." method="_on_held_hitbox_apply_damage_signal"]
+[connection signal="apply_knockback_signal" from="HeldHitbox" to="." method="_on_held_hitbox_apply_knockback_signal"]
+[connection signal="apply_damage_signal" from="Marker2D/UseHitbox" to="." method="_on_use_hitbox_apply_damage_signal"]
+[connection signal="apply_knockback_signal" from="Marker2D/UseHitbox" to="." method="_on_use_hitbox_apply_knockback_signal"]

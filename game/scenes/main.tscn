@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://yvhrt3r6aggi" path="res://scenes/player/player.tscn" id="1_jgtet"]
-[ext_resource type="Texture2D" uid="uid://doxihvs4301fc" path="res://assets/environment/grass.png" id="1_nm6oi"]
-[ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="2_cseyw"]
+[ext_resource type="Texture2D" uid="uid://ctsms5ahp860k" path="res://assets/environment/grass.png" id="1_nm6oi"]
 [ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
+[ext_resource type="PackedScene" uid="uid://dl27yhnnxxnq4" path="res://scenes/enemies/crab/Crab.tscn" id="6_npkop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbkki"]
 size = Vector2(12, 12)
@@ -18,20 +18,24 @@ script = ExtResource("1_cky74")
 [node name="player" parent="." instance=ExtResource("1_jgtet")]
 z_index = 1
 position = Vector2(120, 88)
+mass = 1.0
 max_speed = 100.0
 acceleration = 50.0
 
 [node name="Sprite2D" parent="player" index="0"]
 z_index = 1
-texture_filter = 1
+material = null
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_cseyw")
 
 [node name="CollisionShape2D" parent="player" index="1"]
 shape = SubResource("RectangleShape2D_pbkki")
 debug_color = Color(0.85098, 0.262745, 0.67451, 0.658824)
 
-[node name="hurtbox" parent="player" index="2"]
+[node name="stats" parent="player" index="2"]
+max_health = 0
+current_health = null
+
+[node name="hurtbox" parent="player" index="3"]
 collision_layer = 8
 collision_mask = 64
 
@@ -41,6 +45,8 @@ shape = SubResource("RectangleShape2D_634he")
 [node name="stick" parent="player" instance=ExtResource("4_0iofd")]
 position = Vector2(12, -2)
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
@@ -49,6 +55,9 @@ texture = ExtResource("1_nm6oi")
 centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 320, 320)
+
+[node name="Crab" parent="." instance=ExtResource("6_npkop")]
+position = Vector2(172, 90)
 
 [editable path="player"]
 [editable path="player/hurtbox"]

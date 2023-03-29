@@ -1,7 +1,7 @@
 extends Node
 class_name Weapon
 
-@export var knockback: float
+@export var force: float
 @export var damage: float
 @export var stops_movment: bool 
 # Need something here to denote when you can equip it. 
@@ -48,3 +48,16 @@ func use_animation_finished():
 	held_hitbox.enable()
 	use_hitbox.disable()
 
+
+# Signals from the underlying hitboxes that denote which entity they hit.
+func _on_held_hitbox_apply_damage_signal(entity: Entity):
+	entity.stats.hurt_amount(damage)
+
+func _on_use_hitbox_apply_damage_signal(entity: Entity):
+	entity.stats.hurt_amount(damage)
+
+func _on_held_hitbox_apply_knockback_signal(entity: Entity):
+	entity.apply_knockback(self)
+
+func _on_use_hitbox_apply_knockback_signal(entity: Entity):
+	entity.apply_knockback(self)

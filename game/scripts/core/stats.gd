@@ -18,13 +18,22 @@ class_name Stats
 		current_health = min(value, max_health)
 		set_health_helper()
 
-	
+func _ready():
+	current_health = max_health
+
 signal no_health
 
 signal health_changed
 signal max_health_changed
 
+
 func set_health_helper():
 	if current_health <= 0:
 		emit_signal("no_health")
 #
+
+func hurt_amount(amount: int):
+	current_health -= amount
+
+func heal_amount(amount: int):
+	current_health -= amount

@@ -2,9 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_6nayg"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
-[ext_resource type="PackedScene" uid="uid://du3iimmankr6v" path="res://scenes/core/boxes/hurtbox.tscn" id="3_bgiql"]
+[ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="3_wuvgd"]
 
 [node name="Entity" instance=ExtResource("1_6nayg")]
 script = ExtResource("1_wyaxs")
+friction = 10.0
 
-[node name="hurtbox" parent="." index="2" instance=ExtResource("3_bgiql")]
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("3_wuvgd")
+
+[node name="stats" parent="." index="2"]
+max_health = 5
+current_health = 5

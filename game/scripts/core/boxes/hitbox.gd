@@ -1,14 +1,5 @@
 extends Area2D
 class_name HitBox
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func disable():
 	monitorable = false
@@ -19,3 +10,14 @@ func enable():
 	monitorable = true
 	monitoring = true
 	visible = true
+
+# Kind of hacky signaling to pass a hit to the parent weapon. Because the
+# hitbox has no notion of the force or damage that it can apply.
+signal apply_damage_signal(entity: Entity)
+signal apply_knockback_signal(entity: Entity)
+
+func apply_damage(entity: Entity):
+	emit_signal("apply_damage_signal", entity)
+
+func apply_knockback(entity: Entity):
+	emit_signal("apply_knockback_signal", entity)
