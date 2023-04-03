@@ -32,3 +32,8 @@ shape = SubResource("RectangleShape2D_8u3kh")
 [node name="stats" parent="." index="2"]
 max_health = 5
 current_health = 5
+
+[node name="WeaponForceTimer" type="Timer" parent="." index="5"]
+wait_time = 0.1
+
+[connection signal="timeout" from="WeaponForceTimer" to="." method="_on_weapon_force_timer_timeout"]

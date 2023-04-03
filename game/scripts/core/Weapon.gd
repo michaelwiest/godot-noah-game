@@ -4,6 +4,7 @@ class_name Weapon
 @export var force: float
 @export var damage: float
 @export var stops_movment: bool 
+@export var player_force: float
 # Need something here to denote when you can equip it. 
 @export var equipable_slots: int
 @onready var held_sprite: Sprite2D = $HeldSprite
@@ -28,6 +29,7 @@ func _process(delta):
 #
 
 func equip(equipment_slot):
+	# Something in here to connect the move signal to the player.
 	pass
 
 func use_animation_started():
@@ -37,6 +39,7 @@ func use_animation_started():
 	use_sprite.visible = true
 	held_hitbox.disable()
 	use_hitbox.enable()
+	emit_signal("move_player", player_force)
 	
 
 
@@ -48,6 +51,7 @@ func use_animation_finished():
 	held_hitbox.enable()
 	use_hitbox.disable()
 
+signal move_player(player_force)
 
 # Signals from the underlying hitboxes that denote which entity they hit.
 func _on_held_hitbox_apply_damage_signal(entity: Entity):

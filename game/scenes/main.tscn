@@ -28,6 +28,7 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 320, 320)
 
 [node name="Player" parent="." instance=ExtResource("1_jgtet")]
 position = Vector2(1, -1)
+mass = null
 
 [node name="Sprite2D" parent="Player" index="0"]
 material = SubResource("ShaderMaterial_mfsmm")
@@ -45,5 +46,7 @@ position = Vector2(30, 46)
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
 position = Vector2(32, 0)
+
+[connection signal="move_player" from="Player/stick" to="Player" method="_on_stick_move_player"]
 
 [editable path="Player"]

@@ -1,7 +1,10 @@
 extends Entity
 class_name Player
 
-
+@onready var last_direction: Vector2
+@onready var weapon_force: float = 0
+@onready var weapon_timer = $WeaponForceTimer
+#@onready var direction: Vector2 = Vector2(1, 0)
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 #	pass # Replace with function body.
@@ -9,7 +12,9 @@ class_name Player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var direction: Vector2 = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down")).normalized()
+	if direction:
+		last_direction = direction
 	if direction.y:
 		var velocity_y: float = velocity.y + sign(direction.y) * acceleration
 		if velocity.y < 0:
@@ -27,5 +32,25 @@ func _physics_process(delta):
 			velocity.x = min(velocity_x, max_speed * abs(direction.x))
 	else: 
 		velocity.x = move_toward(velocity.x, 0, friction)
-			
+	
+	
+	if weapon_force > 0:
+		var acc: float = (weapon_force / mass)
+		velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
 	move_and_slide()
+
+
+func _on_stick_move_player(player_force):
+	
+	weapon_force = player_force
+	weapon_timer.start()
+	
+#	print("ACCELERATION", acc)
+#	print(velocity)
+#	print(Vector2(last_direction.x * acc, last_direction.y * acc))
+#	velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
+#	move_and_slide()
+
+
+func _on_weapon_force_timer_timeout():
+	weapon_force = 0

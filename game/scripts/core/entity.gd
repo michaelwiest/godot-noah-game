@@ -9,6 +9,7 @@ class_name Entity
 
 @export var effect_player: AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var direction: Vector2 = Vector2(1, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

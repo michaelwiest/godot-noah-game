@@ -1,12 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://0q6qet3iwckw"]
+[gd_scene load_steps=10 format=3 uid="uid://0q6qet3iwckw"]
 
 [ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="1_livky"]
 [ext_resource type="Script" path="res://scenes/weapons/stick/stick.gd" id="3_hap66"]
 [ext_resource type="Texture2D" uid="uid://ceuk1pt55atff" path="res://assets/weapons/stick/stick.png" id="3_shaov"]
+[ext_resource type="Texture2D" uid="uid://dx7wwxnwf6lvt" path="res://assets/weapons/stick/stick_swing2-Sheet.png" id="4_rviki"]
+
+[sub_resource type="Animation" id="Animation_i0xko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UseSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
 
 [sub_resource type="Animation" id="Animation_d5hrt"]
-resource_name = "use"
-length = 0.15
+resource_name = "use2"
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -15,10 +31,10 @@ tracks/0/path = NodePath("UseSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [8, 9, 10, 11, 12]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -27,7 +43,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -50,22 +66,55 @@ tracks/2/keys = {
 "values": [0.785398, 1.74533, 2.61799]
 }
 
+[sub_resource type="Animation" id="Animation_6ue05"]
+resource_name = "use0"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UseSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"use_animation_started"
+}, {
+"args": [],
+"method": &"use_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jldm6"]
 _data = {
-"use": SubResource("Animation_d5hrt")
+"RESET": SubResource("Animation_i0xko"),
+"use0": SubResource("Animation_6ue05"),
+"use2": SubResource("Animation_d5hrt")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_he3wk"]
 radius = 4.0
 height = 16.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_er3jc"]
-load_path = "res://.godot/imported/sprite_swing.png-f2917ccf8a78f83fa6ecaf1b70851c16.ctex"
-
 [node name="stick" instance=ExtResource("1_livky")]
 script = ExtResource("3_hap66")
 force = 100.0
 damage = 1.0
+player_force = 50.0
 
 [node name="HeldHitbox" parent="." index="0"]
 collision_layer = 16
@@ -75,6 +124,7 @@ collision_mask = 0
 position = Vector2(-1, -1.5)
 
 [node name="HeldSprite" parent="." index="1"]
+visible = false
 texture = ExtResource("3_shaov")
 
 [node name="UseAnimation" parent="." index="2"]
@@ -97,10 +147,10 @@ position = Vector2(2.08025e-12, -4)
 shape = SubResource("CapsuleShape2D_he3wk")
 
 [node name="UseSprite" parent="." index="4"]
-position = Vector2(5, 4)
-texture = SubResource("CompressedTexture2D_er3jc")
-hframes = 3
-frame = 2
+position = Vector2(15, 1)
+texture = ExtResource("4_rviki")
+hframes = 13
+frame = 11
 
 [editable path="HeldHitbox"]
 [editable path="Marker2D/UseHitbox"]
