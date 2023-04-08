@@ -19,6 +19,64 @@ tracks/0/keys = {
 "update": 1,
 "values": [11]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.352556]
+}
+
+[sub_resource type="Animation" id="Animation_6ue05"]
+resource_name = "use0"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UseSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"use_animation_started"
+}, {
+"args": [],
+"method": &"use_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.352556, 1.55334, 2.18864, 2.5412]
+}
 
 [sub_resource type="Animation" id="Animation_d5hrt"]
 resource_name = "use2"
@@ -66,39 +124,6 @@ tracks/2/keys = {
 "values": [0.785398, 1.74533, 2.61799]
 }
 
-[sub_resource type="Animation" id="Animation_6ue05"]
-resource_name = "use0"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UseSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"use_animation_started"
-}, {
-"args": [],
-"method": &"use_animation_finished"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jldm6"]
 _data = {
 "RESET": SubResource("Animation_i0xko"),
@@ -133,17 +158,17 @@ libraries = {
 }
 
 [node name="Marker2D" parent="." index="3"]
-position = Vector2(0, 5)
-rotation = 2.61799
+position = Vector2(4.86423e-08, 2)
+rotation = 0.352556
 gizmo_extents = 194.2
 
 [node name="UseHitbox" parent="Marker2D" index="0"]
-position = Vector2(0, -1)
+position = Vector2(2.08165e-12, 2)
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="Marker2D/UseHitbox" index="0"]
-position = Vector2(2.08025e-12, -4)
+position = Vector2(2, -11)
 shape = SubResource("CapsuleShape2D_he3wk")
 
 [node name="UseSprite" parent="." index="4"]

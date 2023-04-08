@@ -33,23 +33,18 @@ func _physics_process(delta):
 	else: 
 		velocity.x = move_toward(velocity.x, 0, friction)
 	
-	
+	# This isn't super cool or useful so maybe we wanna remove it.
 	if weapon_force > 0:
 		var acc: float = (weapon_force / mass)
 		velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
 	move_and_slide()
 
 
+# In theory this would be a more generic signal that gets attached on
+# equip.
 func _on_stick_move_player(player_force):
-	
 	weapon_force = player_force
 	weapon_timer.start()
-	
-#	print("ACCELERATION", acc)
-#	print(velocity)
-#	print(Vector2(last_direction.x * acc, last_direction.y * acc))
-#	velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
-#	move_and_slide()
 
 
 func _on_weapon_force_timer_timeout():
