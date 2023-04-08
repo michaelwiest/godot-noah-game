@@ -6,7 +6,7 @@ class_name Enemy
 @onready var target_direction: Vector2 = Vector2.ZERO
 
 func at_destination(delta):
-	return global_position.distance_to(target_position) <= (max_speed * delta) / 10
+	return global_position.distance_to(target_position) <= 20 # (max_speed * delta) / 100
 
 func _process(delta):
 	var target = target_computer.compute_target(global_position)

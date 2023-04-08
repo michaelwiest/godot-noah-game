@@ -17,10 +17,10 @@ radius = 6.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfixq"]
-radius = 42.0119
+radius = 77.0584
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prcth"]
-radius = 59.0085
+radius = 110.073
 
 [node name="Crab" node_paths=PackedStringArray("stats", "effect_player") instance=ExtResource("1_xu68e")]
 collision_layer = 128
