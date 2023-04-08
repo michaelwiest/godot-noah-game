@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://yfdxfemgn1e1"]
+
+[ext_resource type="PackedScene" uid="uid://drt7464ggh317" path="res://scenes/enemies/Enemy.tscn" id="1_uedlv"]
+[ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_avvx2"]
+[ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="3_eakrl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itwbt"]
+resource_local_to_scene = true
+shader = ExtResource("2_avvx2")
+shader_parameter/show = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo1ym"]
+
+[node name="Urchin" instance=ExtResource("1_uedlv")]
+collision_layer = 128
+collision_mask = 129
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_itwbt")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_eakrl")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_fo1ym")
+
+[editable path="TargetComputer"]

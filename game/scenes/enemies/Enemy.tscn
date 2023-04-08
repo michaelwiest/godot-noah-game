@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drt7464ggh317"]
+[gd_scene load_steps=7 format=3 uid="uid://drt7464ggh317"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_krsvd"]
 [ext_resource type="Script" path="res://scripts/enemies/Enemy.gd" id="2_lv7re"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="3_gon3v"]
+[ext_resource type="PackedScene" uid="uid://hd76cj47r1cs" path="res://scenes/enemies/TargetComputer.tscn" id="4_1k45m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4deqj"]
 resource_local_to_scene = true
@@ -23,3 +24,10 @@ tree_root = SubResource("AnimationNodeBlendSpace2D_wqyb6")
 parameters/blend_position = Vector2(0.990268, -0.00890207)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+
+[node name="TargetComputer" parent="." index="7" instance=ExtResource("4_1k45m")]
+
+[node name="TargetDetector" parent="TargetComputer" index="1"]
+collision_layer = 0
+
+[editable path="TargetComputer"]

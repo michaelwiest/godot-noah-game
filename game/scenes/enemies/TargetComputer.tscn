@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hd76cj47r1cs"]
+
+[ext_resource type="Script" path="res://scripts/enemies/TargetComputer.gd" id="1_eh3cn"]
+[ext_resource type="PackedScene" uid="uid://b1o8mb3bpqso6" path="res://scenes/core/boxes/TargetDetector.tscn" id="2_x3xna"]
+
+[node name="TargetComputer" type="Node2D"]
+script = ExtResource("1_eh3cn")
+
+[node name="AvoidDetector" parent="." instance=ExtResource("2_x3xna")]
+is_attractor = false
+
+[node name="TargetDetector" parent="." instance=ExtResource("2_x3xna")]
+
+[connection signal="body_entered" from="AvoidDetector" to="AvoidDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="AvoidDetector" to="AvoidDetector" method="_on_body_exited"]
+[connection signal="body_entered" from="TargetDetector" to="TargetDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="TargetDetector" to="TargetDetector" method="_on_body_exited"]

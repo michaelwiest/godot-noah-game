@@ -38,6 +38,7 @@ func _physics_process(delta):
 		var acc: float = (weapon_force / mass)
 		velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
 	move_and_slide()
+#	print("PLAYER POSITION ", global_position)
 
 
 # In theory this would be a more generic signal that gets attached on
