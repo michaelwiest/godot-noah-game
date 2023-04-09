@@ -13,6 +13,7 @@ class_name Entity
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("showing shader")
 	sprite.material.set_shader_parameter("show", true)
 
 

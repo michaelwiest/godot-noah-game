@@ -35,6 +35,11 @@ func zero_target_weights():
 	target_scores = range(0, n_candidates).map(func(_foo): return 0.0)
 	
 
+func set_ignored_body(body: CharacterBody2D):
+	target_detector.ignored_body = body
+	avoid_detector.ignored_body = body
+
+
 func _ready():
 	make_candidate_vectors()
 	zero_target_weights()

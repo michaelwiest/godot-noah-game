@@ -5,6 +5,12 @@ class_name Enemy
 @onready var target_position: Vector2 = global_position
 @onready var target_direction: Vector2 = Vector2.ZERO
 
+func _ready():
+	# Annoyingly i have to set this here too. womp womp. 
+	target_computer.set_ignored_body(self)
+	sprite.material.set_shader_parameter("show", true)
+	print("Setting ignore for: ", self)
+
 func at_destination(delta):
 	return global_position.distance_to(target_position) <= 2 # (max_speed * delta) / 100
 
@@ -23,6 +29,6 @@ func _process(delta):
 										acceleration * delta) 
 	else:
 		pass
-		print("at destination")
+#		print("at destination")
 	move_and_slide()
 	

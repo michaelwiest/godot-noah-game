@@ -4,6 +4,7 @@ var target = null
 var target_inside: bool = false
 @onready var timer = $Timer
 @export var is_attractor: bool = true
+@export var ignored_body: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,8 +24,10 @@ func _on_timer_timeout():
 
 func _on_body_entered(body):
 	print(body)
-	target = body
-	target_inside = true
+	
+	if ignored_body != null and body != ignored_body:
+		target = body
+		target_inside = true
 
 
 
