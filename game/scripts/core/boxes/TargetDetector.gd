@@ -17,6 +17,7 @@ func _on_timer_timeout():
 #	print("Lost target")
 #	print(target)
 	if !target_inside:
+		print("Setting target null")
 		target = null
 
 

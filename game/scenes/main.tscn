@@ -33,7 +33,7 @@ region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 320, 320)
 
 [node name="Urchin" parent="." instance=ExtResource("3_xemuj")]
-position = Vector2(-91, 35)
+position = Vector2(-104, 92)
 
 [node name="Player" parent="." instance=ExtResource("1_jgtet")]
 position = Vector2(-89, -54)

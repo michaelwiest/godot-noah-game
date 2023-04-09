@@ -5,68 +5,78 @@ extends Node2D
 
 @onready var target_vector: Vector2
 @onready var avoid_vector: Vector2
-@onready var final_vector: Vector2
+@onready var best_vector: Vector2
 @onready var target_position: Vector2
 @onready var avoid_position: Vector2
 @onready var returned_position: Vector2
 @onready var target_avoid_angle: float
-@export var avoidance_blend: float = 0.2
+@onready var target_weight: float = 0.0
+@onready var avoid_weight: float = 0.0
+# How much to weight the target vs the avoid.
+@export var bravery: float = 0.51
+@onready var has_target: bool = false
+@onready var has_avoid: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-#	set_process(true)
-	pass
 
+@onready var candidate_vectors: Array
+@export var n_candidates: int = 12
+@onready var target_scores: PackedFloat32Array
+@onready var avoid_scores: PackedFloat32Array
+
+
+func make_candidate_vectors():
+	var rads_per_vec: float = (2 * PI) / n_candidates
+	# For some reason this won't let me say that candidate vector is of Vector2
+	candidate_vectors = range(0, n_candidates).map(func(i): return Vector2.RIGHT.rotated(i * rads_per_vec))
+
+func zero_avoid_weights():
+	avoid_scores = range(0, n_candidates).map(func(_foo): return 0.0)
+func zero_target_weights():
+	target_scores = range(0, n_candidates).map(func(_foo): return 0.0)
 	
+
+func _ready():
+	make_candidate_vectors()
+	zero_target_weights()
+	zero_avoid_weights()
+	assert(0 <= bravery and bravery <= 1)
+
 
 func _draw():
-	draw_line(Vector2.ZERO, target_vector * 50, Color(0, 255, 0, 1), 2)
-	draw_line(Vector2.ZERO, avoid_vector * 50, Color(255, 0, 0, 1), 2)
-	draw_line(Vector2.ZERO, final_vector * 50, Color(0, 0, 255, 1), 2)
-	draw_circle(target_position, 5, Color.GREEN)
-	draw_circle(avoid_position, 5, Color.RED)
-	draw_circle(returned_position, 5, Color.BLUE)
+	for i in range(n_candidates):
+		draw_line(Vector2.ZERO, candidate_vectors[i] * 25,  Color(255, 0, 0, abs(avoid_scores[i])), 4)
+		draw_line(Vector2.ZERO, candidate_vectors[i] * 40,  Color(0, 255, 0, abs(target_scores[i])), 2)
+	draw_line(Vector2.ZERO, best_vector * 50, Color.BLUE, 3)
 	
 
-
 func compute_target(body_position: Vector2):
-#	print(target_detector.has_target())
-#	var target_vector = null
-#	var avoid_vector = null
-#	var target_position = null
-#	var avoid_position = null
-	if target_detector.has_target():
+	has_target = target_detector.has_target()
+	if has_target:
 		target_position = target_detector.target.global_position
 		target_vector = body_position.direction_to(target_position)	
-#	else: 
-#		target_position = null
+		target_scores = candidate_vectors.map(func vdot(cv): return cv.dot(target_vector))
+		target_weight = 1.0 / body_position.distance_to(target_position)
+	else: 
+		target_weight = 0
+		zero_target_weights()
+	
+	has_avoid = avoid_detector.has_target()
 	if avoid_detector.has_target():
 		avoid_position = avoid_detector.target.global_position
 		avoid_vector = body_position.direction_to(avoid_position)
-#	else: 
-#		target_position = null
-	if target_vector != null and avoid_vector != null:
-		var avoid_dot: float = target_vector.dot(avoid_vector)
-		print("DOT: ", avoid_dot)
-#		print("CROSS: ", avoid_vector.cross(target_vector))
-		
-		target_avoid_angle = rad_to_deg(avoid_vector.angle_to(target_vector))
-#		print("ANGLE: ", target_avoid_angle)
-		# Want to move perpendicular to the offending point.
-		var perpendicular_angle = target_avoid_angle + sign(target_avoid_angle) * 90
-#		print("perpendicular angle: ", perpendicular_angle)
-		final_vector = avoid_vector.rotated(deg_to_rad(perpendicular_angle)).normalized()
-#		print("perp vector: ", final_vector)
-#		print("target vector: ", target_vector)
-		# If it is behind the enemy then we don't care.
-		if avoid_dot > 0:
-			final_vector = (abs(avoid_dot) * avoidance_blend * final_vector + (1 - abs(avoid_dot)) * target_vector).normalized() * (1 - avoidance_blend)
-		else:
-			final_vector = target_vector
-			
-		queue_redraw()
-#		print(PI)
-#		print("NORMAL: ", target_vector.direction_to(avoid_position))
-		returned_position = body_position + final_vector * 100
-		return returned_position
+		avoid_scores = candidate_vectors.map(func vdot(cv): return cv.dot(avoid_vector))
+		avoid_weight = 1.0 / body_position.distance_to(avoid_position)
+	else:
+		avoid_weight = 0
+		zero_avoid_weights()
+	
+	if not has_target and not has_avoid:
+		return body_position
+	var combined_scores: Array = range(n_candidates).map(func(i): return bravery * target_weight * target_scores[i] - ((1 - bravery) * avoid_weight * avoid_scores[i]))
+	var best_index: int = combined_scores.find(combined_scores.max())
+	best_vector = candidate_vectors[best_index].normalized()
+	returned_position =  body_position + best_vector * 10
+	queue_redraw()
+	return returned_position
+#	
 		

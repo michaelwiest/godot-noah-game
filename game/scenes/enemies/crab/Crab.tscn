@@ -23,7 +23,7 @@ radius = 77.0584
 radius = 110.073
 
 [node name="Crab" node_paths=PackedStringArray("stats", "effect_player") instance=ExtResource("1_xu68e")]
-collision_layer = 128
+collision_layer = 0
 collision_mask = 133
 stats = NodePath("stats")
 max_speed = 50.0
@@ -31,6 +31,7 @@ acceleration = 400.0
 effect_player = NodePath("EffectPlayer")
 
 [node name="Sprite2D" parent="." index="0"]
+z_index = 1
 material = SubResource("ShaderMaterial_o2ce5")
 texture = ExtResource("2_lj56k")
 
