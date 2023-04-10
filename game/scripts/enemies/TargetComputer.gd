@@ -22,7 +22,7 @@ extends Node2D
 
 
 @onready var candidate_vectors: Array
-@export var n_candidates: int = 12
+@export var n_candidates: int = 4
 @onready var target_scores: PackedFloat32Array
 @onready var avoid_scores: PackedFloat32Array
 @export var debug_widget: bool = true
@@ -54,9 +54,19 @@ func _ready():
 func _draw():
 	for i in range(n_candidates):
 		var cv = candidate_vectors[i]
-		draw_line(cv * 15, cv * 30,  Color(255, 0, 0, abs(avoid_scores[i])), 5)
-		draw_line(cv * 15, cv * 40,  Color(0, 255, 0, abs(target_scores[i])), 3)
-	draw_line(best_vector * 15, best_vector * 50, Color.BLUE, 2)
+		draw_line(cv * 15, cv * 20,  Color(255, 0, 0, max(avoid_scores[i], 0)), 5)
+		draw_line(cv * 15, cv * 30,  Color(0, 255, 0, max(target_scores[i], 0)), 3)
+	draw_line(best_vector * 15, best_vector * 40 * best_vector.length(), Color.BLUE, 2)
+	draw_circle(returned_position, 5, Color.BLUE)
+	
+func get_neighbor_indices(index: int):
+	var index_right: int = index + 1
+	var index_left: int = index - 1
+	if index_right >= n_candidates:
+		index_right = 0
+	if 	index_left < 0:
+		index_left = -1
+	return [index_left, index_right]
 	
 
 func compute_target(body_position: Vector2):
@@ -102,8 +112,19 @@ func compute_target(body_position: Vector2):
 	target_weight = max(target_weight, avoid_weight)
 	var combined_scores: Array = range(n_candidates).map(func(i): return bravery * target_weight * target_scores[i] - ((1 - bravery) * avoid_weight * avoid_scores[i]))
 	var best_index: int = combined_scores.find(combined_scores.max())
+	# TODO (michaelwiest): Find neighboring candidates. And form a weighted average
+	# among them to interpolate between candidates. 
+	var neighbor_indices: Array = get_neighbor_indices(best_index)
+	var left_index = neighbor_indices[0]
+	var right_index = neighbor_indices[1]
+	var weighted_vector = (
+		candidate_vectors[best_index] * combined_scores[best_index] + 
+		candidate_vectors[left_index] * combined_scores[left_index] + 
+		candidate_vectors[right_index] * combined_scores[right_index]) / (combined_scores[best_index] + combined_scores[left_index] + combined_scores[right_index])
+#
 	best_vector = candidate_vectors[best_index].normalized()
-	returned_position =  body_position + best_vector * 10
+	best_vector = weighted_vector.normalized()
+	returned_position =  body_position + best_vector * 50
 	if debug_widget:
 		queue_redraw()
 	return returned_position

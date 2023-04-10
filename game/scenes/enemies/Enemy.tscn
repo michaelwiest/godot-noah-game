@@ -29,6 +29,5 @@ parameters/blend_position = Vector2(0.990268, -0.00890207)
 
 [node name="TargetDetector" parent="TargetComputer" index="1"]
 collision_layer = 0
-is_attractor = true
 
 [editable path="TargetComputer"]

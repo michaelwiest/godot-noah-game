@@ -27,9 +27,6 @@ shape = SubResource("RectangleShape2D_fo1ym")
 [node name="AvoidDetector" parent="TargetComputer" index="0" instance=ExtResource("5_4hln8")]
 is_attractor = false
 
-[node name="TargetDetector" parent="TargetComputer" index="2"]
-is_attractor = true
-
 [connection signal="body_entered" from="TargetComputer/AvoidDetector" to="TargetComputer/AvoidDetector" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="TargetComputer/AvoidDetector" to="TargetComputer/AvoidDetector" method="_on_body_exited" flags=18]
 

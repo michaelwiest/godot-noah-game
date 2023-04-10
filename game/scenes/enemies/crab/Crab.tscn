@@ -17,7 +17,7 @@ radius = 6.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfixq"]
-radius = 77.0584
+radius = 28.0713
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prcth"]
 radius = 110.073
@@ -49,9 +49,6 @@ collision_mask = 16
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m0k37")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="TargetComputer" parent="." index="7"]
-debug_widget = false
 
 [node name="AvoidDetector" parent="TargetComputer" index="0"]
 collision_layer = 0
