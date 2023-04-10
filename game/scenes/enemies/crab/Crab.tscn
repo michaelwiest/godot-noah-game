@@ -31,7 +31,6 @@ acceleration = 400.0
 effect_player = NodePath("EffectPlayer")
 
 [node name="Sprite2D" parent="." index="0"]
-z_index = 1
 material = SubResource("ShaderMaterial_o2ce5")
 texture = ExtResource("2_lj56k")
 
