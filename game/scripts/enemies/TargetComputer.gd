@@ -1,4 +1,4 @@
-extends Node2D
+gitextends Node2D
 
 @onready var target_detector: Area2D = $TargetDetector
 @onready var avoid_detector: Area2D = $AvoidDetector
@@ -77,6 +77,9 @@ func compute_target(body_position: Vector2):
 	
 	if not has_target and not has_avoid:
 		return body_position
+	# Kind of a hack so that the enemies don't just run away if you're behind
+	# an obstacle. 
+	target_weight = max(target_weight, avoid_weight)
 	var combined_scores: Array = range(n_candidates).map(func(i): return bravery * target_weight * target_scores[i] - ((1 - bravery) * avoid_weight * avoid_scores[i]))
 	var best_index: int = combined_scores.find(combined_scores.max())
 	best_vector = candidate_vectors[best_index].normalized()
