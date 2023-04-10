@@ -6,22 +6,23 @@ class_name Enemy
 @onready var target_direction: Vector2 = Vector2.ZERO
 
 func _ready():
-	# Annoyingly i have to set this here too. womp womp. 
-	target_computer.set_ignored_body(self)
+	# Annoyingly this isn't inheriting from parent class?
 	sprite.material.set_shader_parameter("show", true)
-	print("Setting ignore for: ", self)
+	# Don't get attracted or repelled by yourself.
+	target_computer.set_ignored_body(self)
+	
 
 func at_destination(delta):
-	return global_position.distance_to(target_position) <= 2 # (max_speed * delta) / 100
+	# This should be cleaner / not such an obvious hack.
+	return global_position.distance_to(target_position) <= 5 # (max_speed * delta) / 100
 
 func _process(delta):
+	
 	var target = target_computer.compute_target(global_position)
 	if target != null:
 		target_position = target
 	else:
 		target_position = global_position
-#	print("TARGET: ", target)
-#	print("SELF: ", global_position)
 	target_direction = global_position.direction_to(target_position)
 	# This velocity is probably messed up. it acts weird.
 	if !at_destination(delta):
@@ -29,6 +30,5 @@ func _process(delta):
 										acceleration * delta) 
 	else:
 		pass
-#		print("at destination")
 	move_and_slide()
 	

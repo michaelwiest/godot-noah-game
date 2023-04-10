@@ -1,15 +1,18 @@
-gitextends Node2D
+"""
+Component to compute the next direction that an enemy should move in provided
+some target (usually player) and avoids (other enemies?) via TargetDetectors.
+
+This (and TargetDetector) should be extended to handle multiple targets.
+"""
+extends Node2D
 
 @onready var target_detector: Area2D = $TargetDetector
 @onready var avoid_detector: Area2D = $AvoidDetector
 
-@onready var target_vector: Vector2
-@onready var avoid_vector: Vector2
 @onready var best_vector: Vector2
 @onready var target_position: Vector2
 @onready var avoid_position: Vector2
 @onready var returned_position: Vector2
-@onready var target_avoid_angle: float
 @onready var target_weight: float = 0.0
 @onready var avoid_weight: float = 0.0
 # How much to weight the target vs the avoid.
@@ -22,7 +25,7 @@ gitextends Node2D
 @export var n_candidates: int = 12
 @onready var target_scores: PackedFloat32Array
 @onready var avoid_scores: PackedFloat32Array
-
+@export var debug_widget: bool = true
 
 func make_candidate_vectors():
 	var rads_per_vec: float = (2 * PI) / n_candidates
@@ -31,6 +34,7 @@ func make_candidate_vectors():
 
 func zero_avoid_weights():
 	avoid_scores = range(0, n_candidates).map(func(_foo): return 0.0)
+	
 func zero_target_weights():
 	target_scores = range(0, n_candidates).map(func(_foo): return 0.0)
 	
@@ -49,16 +53,30 @@ func _ready():
 
 func _draw():
 	for i in range(n_candidates):
-		draw_line(Vector2.ZERO, candidate_vectors[i] * 25,  Color(255, 0, 0, abs(avoid_scores[i])), 4)
-		draw_line(Vector2.ZERO, candidate_vectors[i] * 40,  Color(0, 255, 0, abs(target_scores[i])), 2)
-	draw_line(Vector2.ZERO, best_vector * 50, Color.BLUE, 3)
+		var cv = candidate_vectors[i]
+		draw_line(cv * 15, cv * 30,  Color(255, 0, 0, abs(avoid_scores[i])), 5)
+		draw_line(cv * 15, cv * 40,  Color(0, 255, 0, abs(target_scores[i])), 3)
+	draw_line(best_vector * 15, best_vector * 50, Color.BLUE, 2)
 	
 
 func compute_target(body_position: Vector2):
+	"""Computes the optimal path among n_candidate vector options via dot prod.
+	
+	This computes the dot product between all candidates and the target and
+	avoid locations. It then subtracts the avoid vector candidates from the 
+	attact vector candidates and weights the options by distance.
+	
+	The vector with the highest score is then selected and an offset position
+	is returned. An improvement would be to just have this return a direction
+	and have the parent Enemy figure out the specific location. 
+	"""
+	
+	# Each of these should likely be its own function call when switching to 
+	# potentially multiple targets / avoids.
 	has_target = target_detector.has_target()
 	if has_target:
 		target_position = target_detector.target.global_position
-		target_vector = body_position.direction_to(target_position)	
+		var target_vector = body_position.direction_to(target_position)	
 		target_scores = candidate_vectors.map(func vdot(cv): return cv.dot(target_vector))
 		target_weight = 1.0 / body_position.distance_to(target_position)
 	else: 
@@ -68,8 +86,10 @@ func compute_target(body_position: Vector2):
 	has_avoid = avoid_detector.has_target()
 	if avoid_detector.has_target():
 		avoid_position = avoid_detector.target.global_position
-		avoid_vector = body_position.direction_to(avoid_position)
+		var avoid_vector = body_position.direction_to(avoid_position)
 		avoid_scores = candidate_vectors.map(func vdot(cv): return cv.dot(avoid_vector))
+		# There is probably a better value in here like a sqrt or some
+		# other function to apply.
 		avoid_weight = 1.0 / body_position.distance_to(avoid_position)
 	else:
 		avoid_weight = 0
@@ -84,7 +104,8 @@ func compute_target(body_position: Vector2):
 	var best_index: int = combined_scores.find(combined_scores.max())
 	best_vector = candidate_vectors[best_index].normalized()
 	returned_position =  body_position + best_vector * 10
-	queue_redraw()
+	if debug_widget:
+		queue_redraw()
 	return returned_position
 #	
 		

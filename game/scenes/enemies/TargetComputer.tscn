@@ -10,6 +10,7 @@ script = ExtResource("1_eh3cn")
 is_attractor = false
 
 [node name="TargetDetector" parent="." instance=ExtResource("2_x3xna")]
+is_attractor = true
 
 [connection signal="body_entered" from="AvoidDetector" to="AvoidDetector" method="_on_body_entered"]
 [connection signal="body_exited" from="AvoidDetector" to="AvoidDetector" method="_on_body_exited"]
