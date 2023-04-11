@@ -12,7 +12,6 @@ extends Node2D
 @onready var best_vector: Vector2
 @onready var target_position: Vector2
 @onready var avoid_position: Vector2
-@onready var returned_position: Vector2
 @onready var target_weight: float = 0.0
 @onready var avoid_weight: float = 0.0
 # How much to weight the target vs the avoid.
@@ -57,7 +56,6 @@ func _draw():
 		draw_line(cv * 15, cv * 20,  Color(255, 0, 0, max(avoid_scores[i], 0)), 5)
 		draw_line(cv * 15, cv * 30,  Color(0, 255, 0, max(target_scores[i], 0)), 3)
 	draw_line(best_vector * 15, best_vector * 40 * best_vector.length(), Color.BLUE, 2)
-	draw_circle(returned_position, 5, Color.BLUE)
 	
 func get_neighbor_indices(index: int):
 	var index_right: int = index + 1
@@ -123,10 +121,8 @@ func compute_target(body_position: Vector2):
 		candidate_vectors[right_index] * combined_scores[right_index]) / (combined_scores[best_index] + combined_scores[left_index] + combined_scores[right_index])
 #
 	best_vector = candidate_vectors[best_index].normalized()
-	best_vector = weighted_vector.normalized()
-	returned_position =  body_position + best_vector * 50
 	if debug_widget:
 		queue_redraw()
-	return returned_position
+	return best_vector
 #	
 		
