@@ -4,11 +4,6 @@ class_name Player
 @onready var last_direction: Vector2
 @onready var weapon_force: float = 0
 @onready var weapon_timer = $WeaponForceTimer
-#@onready var direction: Vector2 = Vector2(1, 0)
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -38,8 +33,6 @@ func _physics_process(delta):
 		var acc: float = (weapon_force / mass)
 		velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
 	move_and_slide()
-#	print("PLAYER POSITION ", global_position)
-
 
 # In theory this would be a more generic signal that gets attached on
 # equip.
