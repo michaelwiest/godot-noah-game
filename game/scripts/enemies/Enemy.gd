@@ -22,7 +22,7 @@ func _process(delta):
 	if target_direction != Vector2.ZERO:
 		at_destination(delta)
 		target_position = global_position + target_direction * 50
-		velocity = velocity.move_toward(target_direction * Vector2(30, 5), 
+		velocity = velocity.move_toward(target_direction * max_speed, 
 										acceleration) 
 	move_and_slide()
 	

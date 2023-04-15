@@ -46,7 +46,7 @@ shape = SubResource("CircleShape2D_h6d5h")
 position = Vector2(9, -3)
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(96, -32)
+position = Vector2(40, -40)
 
 [node name="Sprite2D" parent="Crab" index="0"]
 material = SubResource("ShaderMaterial_8llaa")
@@ -55,8 +55,18 @@ use_parent_material = true
 [node name="TargetComputer" parent="Crab" index="7"]
 n_candidates = 16
 
+[node name="Crab3" parent="." instance=ExtResource("6_npkop")]
+position = Vector2(-152, -8)
+
+[node name="Sprite2D" parent="Crab3" index="0"]
+material = SubResource("ShaderMaterial_8llaa")
+use_parent_material = true
+
+[node name="TargetComputer" parent="Crab3" index="7"]
+n_candidates = 16
+
 [node name="Crab2" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(-136, 120)
+position = Vector2(-168, -64)
 
 [node name="Sprite2D" parent="Crab2" index="0"]
 material = SubResource("ShaderMaterial_8llaa")
@@ -73,6 +83,11 @@ n_candidates = 16
 [editable path="Crab/TargetComputer"]
 [editable path="Crab/TargetComputer/AvoidDetector"]
 [editable path="Crab/TargetComputer/TargetDetector"]
+[editable path="Crab3"]
+[editable path="Crab3/hurtbox"]
+[editable path="Crab3/TargetComputer"]
+[editable path="Crab3/TargetComputer/AvoidDetector"]
+[editable path="Crab3/TargetComputer/TargetDetector"]
 [editable path="Crab2"]
 [editable path="Crab2/hurtbox"]
 [editable path="Crab2/TargetComputer"]
