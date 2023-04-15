@@ -16,11 +16,11 @@ size = Vector2(14, 14)
 radius = 6.0
 height = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfixq"]
-radius = 28.0713
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nwkt"]
+size = Vector2(14, 53)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_prcth"]
-radius = 110.073
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rya1g"]
+size = Vector2(132, 48)
 
 [node name="Crab" node_paths=PackedStringArray("stats", "effect_player") instance=ExtResource("1_xu68e")]
 collision_layer = 128
@@ -52,14 +52,15 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AvoidDetector" parent="TargetComputer" index="0"]
 collision_layer = 0
-collision_mask = 128
+collision_mask = 129
 
 [node name="CollisionShape2D" parent="TargetComputer/AvoidDetector" index="1"]
-shape = SubResource("CircleShape2D_mfixq")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5nwkt")
 debug_color = Color(0.87451, 0.282353, 0.521569, 0.419608)
 
 [node name="CollisionShape2D" parent="TargetComputer/TargetDetector" index="1"]
-shape = SubResource("CircleShape2D_prcth")
+shape = SubResource("RectangleShape2D_rya1g")
 debug_color = Color(0.560784, 0.54902, 0.329412, 0.419608)
 
 [editable path="hurtbox"]

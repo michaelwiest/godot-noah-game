@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcnfrlh0vb6rv"]
+[gd_scene load_steps=10 format=3 uid="uid://dcnfrlh0vb6rv"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://yvhrt3r6aggi" path="res://scenes/player/player.tscn" id="1_jgtet"]
@@ -15,11 +15,6 @@ shader_parameter/show = false
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6d5h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8llaa"]
-resource_local_to_scene = true
-shader = ExtResource("4_s65n4")
-shader_parameter/show = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_744xx"]
 resource_local_to_scene = true
 shader = ExtResource("4_s65n4")
 shader_parameter/show = false
@@ -51,6 +46,7 @@ shape = SubResource("CircleShape2D_h6d5h")
 position = Vector2(9, -3)
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
+position = Vector2(96, -32)
 
 [node name="Sprite2D" parent="Crab" index="0"]
 material = SubResource("ShaderMaterial_8llaa")
@@ -60,11 +56,14 @@ use_parent_material = true
 n_candidates = 16
 
 [node name="Crab2" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(-40, 88)
+position = Vector2(-136, 120)
 
 [node name="Sprite2D" parent="Crab2" index="0"]
-material = SubResource("ShaderMaterial_744xx")
+material = SubResource("ShaderMaterial_8llaa")
 use_parent_material = true
+
+[node name="TargetComputer" parent="Crab2" index="7"]
+n_candidates = 16
 
 [connection signal="move_player" from="Player/stick" to="Player" method="_on_stick_move_player"]
 
