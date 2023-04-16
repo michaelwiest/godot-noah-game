@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl27yhnnxxnq4"]
+[gd_scene load_steps=10 format=3 uid="uid://dl27yhnnxxnq4"]
 
 [ext_resource type="PackedScene" uid="uid://drt7464ggh317" path="res://scenes/enemies/Enemy.tscn" id="1_xu68e"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_db7b7"]
 [ext_resource type="Texture2D" uid="uid://dp53enc6h0tyk" path="res://assets/animals/crab.png" id="2_lj56k"]
+[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="4_kj0yl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2ce5"]
 resource_local_to_scene = true
@@ -50,6 +51,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m0k37")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[node name="TargetComputer" parent="." index="7"]
+n_candidates = 4
+
 [node name="AvoidDetector" parent="TargetComputer" index="0"]
 collision_layer = 0
 collision_mask = 129
@@ -63,7 +67,14 @@ debug_color = Color(0.87451, 0.282353, 0.521569, 0.419608)
 shape = SubResource("RectangleShape2D_rya1g")
 debug_color = Color(0.560784, 0.54902, 0.329412, 0.419608)
 
+[node name="TargetLooker" parent="." index="8"]
+length = 50
+
+[node name="Weapon" parent="." index="9" instance=ExtResource("4_kj0yl")]
+
 [editable path="hurtbox"]
 [editable path="TargetComputer"]
 [editable path="TargetComputer/AvoidDetector"]
 [editable path="TargetComputer/TargetDetector"]
+[editable path="TargetLooker"]
+[editable path="Weapon"]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dba8mndptc85g" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
+[ext_resource type="PackedScene" uid="uid://yfdxfemgn1e1" path="res://scenes/enemies/urchin/urchin.tscn" id="6_is17o"]
 [ext_resource type="PackedScene" uid="uid://dl27yhnnxxnq4" path="res://scenes/enemies/crab/Crab.tscn" id="6_npkop"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfsmm"]
@@ -13,11 +14,6 @@ shader = ExtResource("4_s65n4")
 shader_parameter/show = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6d5h"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8llaa"]
-resource_local_to_scene = true
-shader = ExtResource("4_s65n4")
-shader_parameter/show = false
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cky74")
@@ -44,52 +40,14 @@ shape = SubResource("CircleShape2D_h6d5h")
 
 [node name="stick" parent="Player" instance=ExtResource("4_0iofd")]
 position = Vector2(9, -3)
+stops_movment = false
+equipable_slots = 0
+
+[node name="Urchin" parent="." instance=ExtResource("6_is17o")]
+position = Vector2(-88, 56)
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(40, -40)
-
-[node name="Sprite2D" parent="Crab" index="0"]
-material = SubResource("ShaderMaterial_8llaa")
-use_parent_material = true
-
-[node name="TargetComputer" parent="Crab" index="7"]
-n_candidates = 16
-
-[node name="Crab3" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(-152, -8)
-
-[node name="Sprite2D" parent="Crab3" index="0"]
-material = SubResource("ShaderMaterial_8llaa")
-use_parent_material = true
-
-[node name="TargetComputer" parent="Crab3" index="7"]
-n_candidates = 16
-
-[node name="Crab2" parent="." instance=ExtResource("6_npkop")]
-position = Vector2(-168, -64)
-
-[node name="Sprite2D" parent="Crab2" index="0"]
-material = SubResource("ShaderMaterial_8llaa")
-use_parent_material = true
-
-[node name="TargetComputer" parent="Crab2" index="7"]
-n_candidates = 16
 
 [connection signal="move_player" from="Player/stick" to="Player" method="_on_stick_move_player"]
 
 [editable path="Player"]
-[editable path="Crab"]
-[editable path="Crab/hurtbox"]
-[editable path="Crab/TargetComputer"]
-[editable path="Crab/TargetComputer/AvoidDetector"]
-[editable path="Crab/TargetComputer/TargetDetector"]
-[editable path="Crab3"]
-[editable path="Crab3/hurtbox"]
-[editable path="Crab3/TargetComputer"]
-[editable path="Crab3/TargetComputer/AvoidDetector"]
-[editable path="Crab3/TargetComputer/TargetDetector"]
-[editable path="Crab2"]
-[editable path="Crab2/hurtbox"]
-[editable path="Crab2/TargetComputer"]
-[editable path="Crab2/TargetComputer/AvoidDetector"]
-[editable path="Crab2/TargetComputer/TargetDetector"]
