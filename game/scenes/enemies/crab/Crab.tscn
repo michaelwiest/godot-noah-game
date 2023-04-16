@@ -18,7 +18,7 @@ radius = 6.0
 height = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nwkt"]
-size = Vector2(14, 53)
+size = Vector2(14, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rya1g"]
 size = Vector2(132, 48)
@@ -53,13 +53,13 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="TargetComputer" parent="." index="7"]
 n_candidates = 4
+debug_widget = false
 
 [node name="AvoidDetector" parent="TargetComputer" index="0"]
 collision_layer = 0
 collision_mask = 129
 
 [node name="CollisionShape2D" parent="TargetComputer/AvoidDetector" index="1"]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5nwkt")
 debug_color = Color(0.87451, 0.282353, 0.521569, 0.419608)
 
