@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://drt7464ggh317"]
+[gd_scene load_steps=8 format=3 uid="uid://drt7464ggh317"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_krsvd"]
 [ext_resource type="Script" path="res://scripts/enemies/Enemy.gd" id="2_lv7re"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="3_gon3v"]
 [ext_resource type="PackedScene" uid="uid://hd76cj47r1cs" path="res://scenes/enemies/TargetComputer.tscn" id="4_1k45m"]
+[ext_resource type="PackedScene" uid="uid://k2fjw5ni3k4l" path="res://scenes/enemies/TargetLooker.tscn" id="5_8k3py"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4deqj"]
 resource_local_to_scene = true
@@ -30,5 +31,7 @@ n_candidates = 8
 
 [node name="TargetDetector" parent="TargetComputer" index="1"]
 collision_layer = 0
+
+[node name="TargetLooker" parent="." index="8" instance=ExtResource("5_8k3py")]
 
 [editable path="TargetComputer"]
