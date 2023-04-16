@@ -36,5 +36,4 @@ func _process(delta):
 		velocity = velocity.move_toward(target_direction * max_speed, 
 										acceleration) 
 	move_and_slide()
-	print(target_looker.can_see_player())
 	
