@@ -1,6 +1,10 @@
 extends Entity
 class_name Player
 
+signal toggle_inventory
+
+@export var inventory_data: InventoryData
+
 @onready var last_direction: Vector2
 @onready var weapon_force: float = 0
 @onready var weapon_timer = $WeaponForceTimer
@@ -33,6 +37,9 @@ func _physics_process(delta):
 		var acc: float = (weapon_force / mass)
 		velocity += Vector2(last_direction.x * acc, last_direction.y * acc)
 	move_and_slide()
+	
+	# Open inventory menu if action pressed
+	inventory_input() 
 
 # In theory this would be a more generic signal that gets attached on
 # equip.
@@ -43,3 +50,7 @@ func _on_stick_move_player(player_force):
 
 func _on_weapon_force_timer_timeout():
 	weapon_force = 0
+	
+func inventory_input() -> void:
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
