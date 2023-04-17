@@ -52,12 +52,13 @@ shape = SubResource("CapsuleShape2D_m0k37")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="TargetComputer" parent="." index="7"]
+bravery = 0.6
 n_candidates = 4
 debug_widget = false
 
 [node name="AvoidDetector" parent="TargetComputer" index="0"]
 collision_layer = 0
-collision_mask = 129
+collision_mask = 133
 
 [node name="CollisionShape2D" parent="TargetComputer/AvoidDetector" index="1"]
 shape = SubResource("RectangleShape2D_5nwkt")
