@@ -18,7 +18,7 @@ func set_slot_data(slot_data: SlotData) -> void:
 		quantity_label.hide()
 
 
-## Hnadle GUI events on the inventory slot
+## Handle GUI events on the inventory slot
 ## This should emit a signal that the slot was clicked and send the slot index 
 ## (index of the current node in the grid and if the left or right mouse button was clicked)
 func _on_gui_input(event):

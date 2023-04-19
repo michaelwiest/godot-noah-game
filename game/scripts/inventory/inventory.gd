@@ -12,7 +12,7 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 	for child in item_grid.get_children():
 		child.queue_free()
 		
-	for slot_data in inventory_data.slot_datas:
+	for slot_data in inventory_data.slot_data_list:
 		var slot = Slot.instantiate()
 		item_grid.add_child(slot)
 		
