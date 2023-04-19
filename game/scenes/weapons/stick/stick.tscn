@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://0q6qet3iwckw"]
 
-[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="1_livky"]
+[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="1_livky"]
 [ext_resource type="Script" path="res://scenes/weapons/stick/stick.gd" id="3_hap66"]
 [ext_resource type="Texture2D" uid="uid://ceuk1pt55atff" path="res://assets/weapons/stick/stick.png" id="3_shaov"]
-[ext_resource type="Texture2D" uid="uid://dx7wwxnwf6lvt" path="res://assets/weapons/stick/stick_swing2-Sheet.png" id="4_rviki"]
+[ext_resource type="Texture2D" uid="uid://fmqxtail2e7n" path="res://assets/weapons/stick/stick_swing2-Sheet.png" id="4_rviki"]
 
 [sub_resource type="Animation" id="Animation_i0xko"]
 length = 0.001
