@@ -2,23 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://yvhrt3r6aggi" path="res://scenes/player/player.tscn" id="1_jgtet"]
-
 [ext_resource type="Texture2D" uid="uid://xmq0add7k2mb" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
-
-[ext_resource type="Texture2D" uid="uid://dba8mndptc85g" path="res://assets/environment/sand.png" id="2_m1ov6"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
-
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
 [ext_resource type="PackedScene" uid="uid://dl27yhnnxxnq4" path="res://scenes/enemies/crab/Crab.tscn" id="6_npkop"]
-
 [ext_resource type="Script" path="res://scripts/inventory/inventory_interface.gd" id="7_04jhi"]
 [ext_resource type="PackedScene" uid="uid://bu04ksinencd4" path="res://scenes/inventory/inventory.tscn" id="7_q1wkd"]
+[ext_resource type="PackedScene" uid="uid://ci1ofrh1tfntn" path="res://scenes/environment/rock.tscn" id="8_l8mwe"]
 [ext_resource type="PackedScene" uid="uid://dxh4j6ubqdrc8" path="res://scenes/inventory/slot.tscn" id="10_gmakw"]
-
-[ext_resource type="PackedScene" uid="uid://8l446s8loxlu" path="res://scenes/environment/rock.tscn" id="8_2tl20"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfsmm"]
 resource_local_to_scene = true
@@ -56,8 +48,8 @@ position = Vector2(9, -3)
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
 
-[node name="rock" parent="." instance=ExtResource("8_2tl20")]
-position = Vector2(56, 24)
+[node name="Rock" parent="." instance=ExtResource("8_l8mwe")]
+position = Vector2(18, -42)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -83,3 +75,4 @@ layout_mode = 0
 [connection signal="move_player" from="Player/stick" to="Player" method="_on_stick_move_player"]
 
 [editable path="Player"]
+[editable path="Rock"]

@@ -6,7 +6,7 @@ func _process(delta):
 	pass
 
 
-func use0():
+func use():
 	UseAnimation.play("use0")
 
 
