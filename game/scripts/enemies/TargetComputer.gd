@@ -124,7 +124,6 @@ func compute_target_direction(body_position: Vector2):
 	else:
 		repel_weight = 0
 		zero_repel_weights()
-	
 	if not has_attract and not has_repel:
 		return Vector2.ZERO
 	var combined_scores: Array = shape_weight_vectors(attract_scores, repel_scores)

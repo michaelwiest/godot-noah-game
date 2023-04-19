@@ -14,6 +14,7 @@ shader_parameter/show = false
 size = Vector2(12, 12)
 
 [node name="Player" instance=ExtResource("1_6nayg")]
+y_sort_enabled = true
 collision_mask = 133
 script = ExtResource("1_wyaxs")
 max_speed = 100.0
@@ -21,6 +22,7 @@ friction = 50.0
 acceleration = 50.0
 
 [node name="Sprite2D" parent="." index="0"]
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_k5fwv")
 scale = Vector2(0.1, 0.1)
