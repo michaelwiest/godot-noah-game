@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drt7464ggh317" path="res://scenes/enemies/Enemy.tscn" id="1_xu68e"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="2_db7b7"]
 [ext_resource type="Texture2D" uid="uid://dp53enc6h0tyk" path="res://assets/animals/crab.png" id="2_lj56k"]
-[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/weapon.tscn" id="4_kj0yl"]
+[ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="4_kj0yl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2ce5"]
 resource_local_to_scene = true

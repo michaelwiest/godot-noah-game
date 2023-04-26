@@ -17,6 +17,7 @@ size = Vector2(12, 12)
 y_sort_enabled = true
 collision_mask = 133
 script = ExtResource("1_wyaxs")
+inventory_data = null
 max_speed = 100.0
 friction = 50.0
 acceleration = 50.0

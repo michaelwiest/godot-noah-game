@@ -13,11 +13,11 @@ func enable():
 
 # Kind of hacky signaling to pass a hit to the parent weapon. Because the
 # hitbox has no notion of the force or damage that it can apply.
-signal apply_damage_signal(entity: Entity)
-signal apply_knockback_signal(entity: Entity)
+signal apply_hit_signal(entity: Entity)
+#signal apply_knockback_signal(entity: Entity)
 
-func apply_damage(entity: Entity):
-	emit_signal("apply_damage_signal", entity)
-
-func apply_knockback(entity: Entity):
-	emit_signal("apply_knockback_signal", entity)
+func apply_hit(entity: Entity):
+	emit_signal("apply_hit_signal", entity)
+#
+#func apply_knockback(entity: Entity):
+#	emit_signal("apply_knockback_signal", entity)

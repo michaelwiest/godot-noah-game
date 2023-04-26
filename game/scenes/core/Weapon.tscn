@@ -1,35 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://coq3fu840y45p"]
+[gd_scene load_steps=2 format=3 uid="uid://coq3fu840y45p"]
 
 [ext_resource type="Script" path="res://scripts/core/Weapon.gd" id="1_hynss"]
-[ext_resource type="PackedScene" uid="uid://uieln8qom7qa" path="res://scenes/core/boxes/hitbox.tscn" id="2_wp53t"]
-
-[sub_resource type="Animation" id="Animation_sw41b"]
-resource_name = "use"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3s6k"]
-_data = {
-"use": SubResource("Animation_sw41b")
-}
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_hynss")
-
-[node name="HeldHitbox" parent="." instance=ExtResource("2_wp53t")]
-
-[node name="HeldSprite" type="Sprite2D" parent="."]
-
-[node name="UseAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_m3s6k")
-}
-
-[node name="Marker2D" type="Marker2D" parent="."]
-
-[node name="UseHitbox" parent="Marker2D" instance=ExtResource("2_wp53t")]
-
-[node name="UseSprite" type="Sprite2D" parent="."]
-
-[connection signal="apply_damage_signal" from="HeldHitbox" to="." method="_on_held_hitbox_apply_damage_signal"]
-[connection signal="apply_knockback_signal" from="HeldHitbox" to="." method="_on_held_hitbox_apply_knockback_signal"]
-[connection signal="apply_damage_signal" from="Marker2D/UseHitbox" to="." method="_on_use_hitbox_apply_damage_signal"]
-[connection signal="apply_knockback_signal" from="Marker2D/UseHitbox" to="." method="_on_use_hitbox_apply_knockback_signal"]

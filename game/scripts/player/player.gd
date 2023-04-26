@@ -41,12 +41,6 @@ func _physics_process(delta):
 	# Open inventory menu if action pressed
 	inventory_input() 
 
-# In theory this would be a more generic signal that gets attached on
-# equip.
-func _on_stick_move_player(player_force):
-	weapon_force = player_force
-	weapon_timer.start()
-
 
 func _on_weapon_force_timer_timeout():
 	weapon_force = 0
