@@ -9,13 +9,18 @@ class_name Weapon
 
 func _get_attack_path(attack_path: String) -> String:
 	# If it is an absolute path then assume it's fine.
+	var to_return: String
 	if len(attack_path.split('/')) > 1: 
-		return attack_path
+		to_return = attack_path
 	else:
 		var base_path: String = self.scene_file_path
 		base_path = base_path.rsplit("/", true, 1)[0]
-		return base_path + "/" + attack_path
-
+		to_return = base_path + "/" + attack_path
+	if to_return.ends_with(".tscn"):
+		return to_return
+	else:
+		return to_return + ".tscn"
+		
 func _increment_attack_index():
 	active_attack_index = (active_attack_index + 1) % len(attacks)
 	
