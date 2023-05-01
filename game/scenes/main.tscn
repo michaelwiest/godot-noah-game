@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dba8mndptc85g" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
-[ext_resource type="PackedScene" uid="uid://d00kd5enjlunj" path="res://scenes/weapons/red_weapon/red_weapon.tscn" id="6_2b6hc"]
+[ext_resource type="PackedScene" uid="uid://csfe5phqo7xx5" path="res://scenes/weapons/red_weapon/red_weapon2.tscn" id="6_l73es"]
 [ext_resource type="PackedScene" uid="uid://dl27yhnnxxnq4" path="res://scenes/enemies/crab/Crab.tscn" id="6_npkop"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_interface.gd" id="7_04jhi"]
 [ext_resource type="PackedScene" uid="uid://bu04ksinencd4" path="res://scenes/inventory/inventory.tscn" id="7_q1wkd"]
@@ -43,7 +43,7 @@ shape = SubResource("CircleShape2D_h6d5h")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="RedWeapon" parent="Player" instance=ExtResource("6_2b6hc")]
+[node name="RedWeapon2" parent="Player" instance=ExtResource("6_l73es")]
 
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
 

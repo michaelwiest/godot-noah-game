@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var red_weapon: Weapon = $Player/RedWeapon
+@onready var red_weapon: Weapon = $Player/RedWeapon2
 @onready var inventory_interface: Control = $UI/InventoryInterface
 @onready var player: Player = $Player
 
@@ -12,8 +12,10 @@ func _ready():
 
 # Hack for now before having equipment associated with the player
 func _process(delta):
+	pass
 	if Input.is_action_just_pressed("ui_accept"):
 		red_weapon.use()
+		red_weapon.flip_h()
 
 func toggle_inventory_interface() -> void:
 	inventory_interface.visible = not inventory_interface.visible
