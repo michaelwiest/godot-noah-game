@@ -5,6 +5,7 @@ class_name Weapon
 @export var attack_paths: Array[String]
 @onready var active_attack_index: int = 0
 @onready var attacks: Array[Attack]
+@onready var attacking: bool = false
 
 func _get_attack_path(attack_path: String) -> String:
 	# If it is an absolute path then assume it's fine.
@@ -15,25 +16,34 @@ func _get_attack_path(attack_path: String) -> String:
 		base_path = base_path.rsplit("/", true, 1)[0]
 		return base_path + "/" + attack_path
 
+func _increment_attack_index():
+	active_attack_index = (active_attack_index + 1) % len(attacks)
+	
 func _create_attacks():
 	for ap in attack_paths:
 		var attack: Attack = load(_get_attack_path(ap)).instantiate()
 		add_child(attack)
 		attack.attack_end()
 		attack.attack_apply_hit_signal.connect(apply_hit)
+		attack.attack_end_signal.connect(attack_end)
+		attack.attack_start_signal.connect(attack_start)
 		attacks.append(attack)
+
 
 func _ready():
 	# Helper function to attach attacks to a weapon given 
 	# the supplied paths.
 	_create_attacks()
+
 	
 func flip_h():
 	# Horizontally flip the whole weapon.
 	scale = Vector2(scale[0] * -1, 1)
 	
 func use():
-	attacks[active_attack_index].use()
+	if not attacking:
+		attacks[active_attack_index].use()
+		_increment_attack_index()
 
 
 func equip(equipment_slot):
@@ -51,3 +61,9 @@ func apply_damage(entity: Entity):
 
 func apply_knockback(entity: Entity):
 	entity.apply_knockback(position, weapon_data.force)
+
+func attack_start():
+	attacking = true
+
+func attack_end():
+	attacking = false
