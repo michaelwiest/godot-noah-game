@@ -6,4 +6,4 @@
 [node name="RedWeapon2" type="Node2D"]
 script = ExtResource("1_wm5b7")
 weapon_data = ExtResource("2_jibx0")
-attack_paths = Array[String](["red_attack_1.tscn", "red_attack_2.tscn"])
+attack_paths = Array[String](["red_attack_1.tscn", "red_attack_2.tscn", "red_attack_2.tscn"])

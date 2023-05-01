@@ -25,5 +25,6 @@ signal attack_apply_hit_signal(entity: Entity)
 signal attack_end_signal
 signal attack_start_signal
 
+
 func _on_hitbox_apply_hit_signal(entity):
 	emit_signal("attack_apply_hit_signal", entity)
