@@ -2,35 +2,22 @@ extends Node2D
 class_name Weapon
 
 @export var weapon_data: WeaponData
-@export var attack_paths: Array[String]
 @export var combo_window: float = 0.2  # Seconds
 @onready var active_attack_index: int = 0
 @onready var attacks: Array[Attack]
 @onready var attacking: bool = false
 @onready var combo_timer = $ComboTimer
+@export var attack_scenes: Array[PackedScene] = []
 
-func _get_attack_path(attack_path: String) -> String:
-	# If it is an absolute path then assume it's fine.
-	var to_return: String
-	if len(attack_path.split('/')) > 1: 
-		to_return = attack_path
-	else:
-		var base_path: String = self.scene_file_path
-		base_path = base_path.rsplit("/", true, 1)[0]
-		to_return = base_path + "/" + attack_path
-	if to_return.ends_with(".tscn"):
-		return to_return
-	else:
-		return to_return + ".tscn"
 		
 func _increment_attack_index():
 	active_attack_index = (active_attack_index + 1) % len(attacks)
-	
+
 func _create_attacks():
 	# Helper function to attach attacks to a weapon given 
-	# the supplied paths.
-	for ap in attack_paths:
-		var attack: Attack = load(_get_attack_path(ap)).instantiate()
+	# the supplied packed scenes
+	for at in attack_scenes:
+		var attack: Attack = at.instantiate()
 		add_child(attack)
 		attack.attack_apply_hit_signal.connect(apply_hit)
 		attack.attack_end_signal.connect(attack_end)

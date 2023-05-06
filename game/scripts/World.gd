@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var red_weapon: Weapon = $Player/RedWeapon3
+@onready var red_weapon: Weapon = $Player/RedWeapon
 @onready var inventory_interface: Control = $UI/InventoryInterface
 @onready var player: Player = $Player
 
