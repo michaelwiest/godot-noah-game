@@ -9,14 +9,19 @@ func use():
 	animation_player.play("use")
 
 func attack_start():
-	hitbox.enable()
-	sprite.visible = true
+	enable()
 	emit_signal("attack_start_signal")
 	
+func enable():
+	hitbox.enable()
+	sprite.visible = true
 
-func attack_end():
+func disable():
 	hitbox.disable()
 	sprite.visible = false
+
+func attack_end():
+	disable()
 	emit_signal("attack_end_signal")
 
 # Kind of hacky signaling to pass a hit to the parent weapon. Because the
