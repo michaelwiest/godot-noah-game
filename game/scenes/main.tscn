@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcnfrlh0vb6rv"]
+[gd_scene load_steps=19 format=3 uid="uid://dcnfrlh0vb6rv"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
-[ext_resource type="PackedScene" uid="uid://yvhrt3r6aggi" path="res://scenes/player/player.tscn" id="1_jgtet"]
-[ext_resource type="Texture2D" uid="uid://xmq0add7k2mb" path="res://assets/environment/sand.png" id="2_m1ov6"]
+[ext_resource type="PackedScene" uid="uid://dptlsd0577fey" path="res://scenes/player/player.tscn" id="1_jgtet"]
+[ext_resource type="Texture2D" uid="uid://csitno5ttlbb0" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
@@ -10,7 +10,12 @@
 [ext_resource type="Script" path="res://scripts/inventory/inventory_interface.gd" id="7_04jhi"]
 [ext_resource type="PackedScene" uid="uid://bu04ksinencd4" path="res://scenes/inventory/inventory.tscn" id="7_q1wkd"]
 [ext_resource type="PackedScene" uid="uid://ci1ofrh1tfntn" path="res://scenes/environment/rock.tscn" id="8_l8mwe"]
+[ext_resource type="PackedScene" uid="uid://cwwmorg4pq0c8" path="res://scenes/core/world_item.tscn" id="9_qowr7"]
+[ext_resource type="Resource" uid="uid://bv8jejavbd6k6" path="res://resources/items/apple.tres" id="10_5eq8h"]
 [ext_resource type="PackedScene" uid="uid://dxh4j6ubqdrc8" path="res://scenes/inventory/slot.tscn" id="10_gmakw"]
+[ext_resource type="Resource" uid="uid://dse1ehyjnosyv" path="res://resources/items/blue_book.tres" id="11_hxiq7"]
+[ext_resource type="Resource" uid="uid://c2o0b51pu6int" path="res://resources/items/bow.tres" id="12_3yxap"]
+[ext_resource type="Resource" uid="uid://dikb6fhl7eps4" path="res://resources/items/scroll.tres" id="13_i1whx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfsmm"]
 resource_local_to_scene = true
@@ -51,6 +56,22 @@ position = Vector2(9, -3)
 [node name="Rock" parent="." instance=ExtResource("8_l8mwe")]
 position = Vector2(18, -42)
 
+[node name="WorldItems" parent="." instance=ExtResource("9_qowr7")]
+position = Vector2(-68, -126)
+item_data = ExtResource("10_5eq8h")
+
+[node name="WorldItems2" parent="." instance=ExtResource("9_qowr7")]
+position = Vector2(-47, -91)
+item_data = ExtResource("11_hxiq7")
+
+[node name="WorldItems3" parent="." instance=ExtResource("9_qowr7")]
+position = Vector2(-110, -107)
+item_data = ExtResource("12_3yxap")
+
+[node name="WorldItems4" parent="." instance=ExtResource("9_qowr7")]
+position = Vector2(-140, -72)
+item_data = ExtResource("13_i1whx")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="InventoryInterface" type="Control" parent="UI"]
@@ -75,4 +96,5 @@ layout_mode = 0
 [connection signal="move_player" from="Player/stick" to="Player" method="_on_stick_move_player"]
 
 [editable path="Player"]
+[editable path="Player/PlayerInteractor"]
 [editable path="Rock"]
