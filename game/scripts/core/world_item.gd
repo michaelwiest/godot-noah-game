@@ -37,7 +37,11 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		item_data.InteractionType.PICK_UP:
 			print("%s picked up %s" % [interactor, $Interactable])
 			if interactor.controller:
-				interactor.controller.pick_up_world_item(self)
+				var item_picked_up = interactor.controller.pick_up_world_item(self)
+				
+				# When item is picked up we want to remove it from the screen
+				if item_picked_up:
+					queue_free()
 				
 		item_data.InteractionType.EQUIP:
 			print("%s Equipped up %s" % [interactor, $Interactable])

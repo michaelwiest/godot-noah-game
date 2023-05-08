@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://dptlsd0577fey" path="res://scenes/player/player.tscn" id="1_jgtet"]
-[ext_resource type="Texture2D" uid="uid://csitno5ttlbb0" path="res://assets/environment/sand.png" id="2_m1ov6"]
+[ext_resource type="Texture2D" uid="uid://c2y2punqrg18q" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
