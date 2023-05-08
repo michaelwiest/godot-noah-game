@@ -52,5 +52,22 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 			return grabbed_slot_data
 	return null
 
-	
-			
+## Find first empty slot and add item unless item can be stacked, then stack it and return true
+## If no empty slots are found, item will not be added and function returns false
+func insert_slot_data(new_slot_data: SlotData) -> bool:
+	## Search for stackable items and try to stack. 
+	## If cannot stack attempt to add to new slot.
+	if new_slot_data.item_data.stackable:
+		for slot_data in slot_data_list:
+			if slot_data:
+				if slot_data and slot_data.can_fully_merge_with(new_slot_data):
+					slot_data.fully_merge_with(new_slot_data)
+					inventory_updated.emit(self)
+					return true
+	# Item was not stacked so add it to an empty slot
+	for i in slot_data_list.size():
+		if not slot_data_list[i]:
+			slot_data_list[i] = new_slot_data
+			inventory_updated.emit(self)
+			return true
+	return false
