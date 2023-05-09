@@ -8,6 +8,7 @@ force = 500.0
 damage = 1.0
 stops_movment = false
 equipment_slot = 0
+attack_indices = Array[int]([0, 1, 1])
 name = ""
 description = ""
 stackable = false

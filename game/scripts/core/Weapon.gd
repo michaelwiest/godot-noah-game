@@ -16,8 +16,8 @@ func _increment_attack_index():
 func _create_attacks():
 	# Helper function to attach attacks to a weapon given 
 	# the supplied packed scenes
-	for at in attack_scenes:
-		var attack: Attack = at.instantiate()
+	for attack_index in weapon_data.attack_indices:
+		var attack: Attack = attack_scenes[attack_index].instantiate()
 		add_child(attack)
 		attack.attack_apply_hit_signal.connect(apply_hit)
 		attack.attack_end_signal.connect(attack_end)
@@ -27,6 +27,7 @@ func _create_attacks():
 
 
 func _ready():
+	assert (weapon_data.attack_indices.max() < len(attack_scenes))
 	_create_attacks()
 	
 	
