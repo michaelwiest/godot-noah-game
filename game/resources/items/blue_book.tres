@@ -13,3 +13,4 @@ name = "Blue Book"
 description = "The Great Gatsby"
 stackable = true
 texture = SubResource("AtlasTexture_unl3i")
+interaction_type = 0

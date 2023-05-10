@@ -13,3 +13,4 @@ name = "Bow"
 description = "A simple bow"
 stackable = false
 texture = SubResource("AtlasTexture_8chbk")
+interaction_type = 2
