@@ -55,12 +55,6 @@ func inventory_input() -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
 
-## Adds world_item to inventory
-func pick_up_world_item(world_item: WorldItem) -> bool:
-	var slot_data: SlotData = SlotData.new().create_single_slot_data()
-	slot_data.item_data = world_item.item_data
-	return inventory_data.insert_slot_data(slot_data)
-
 ## Adds world_item to equipment slot and instances a Weapon for the player to use
 func equip_world_item(world_item: WorldItem) -> void:
 	pass

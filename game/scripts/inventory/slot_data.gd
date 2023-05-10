@@ -32,8 +32,12 @@ func fully_merge_with(other_slot_data: SlotData) -> void:
 	quantity += other_slot_data.quantity
 
 ## Create a new SlotData node and remove 1 value from this slot
-func create_single_slot_data() -> SlotData:
+func create_single_slot_data(new_item_data: ItemData = null) -> SlotData:
 	var new_slot_data: SlotData = duplicate()
 	new_slot_data.quantity = 1
 	quantity -= 1
+		
+	if new_item_data:
+		new_slot_data.item_data = new_item_data
+		
 	return new_slot_data

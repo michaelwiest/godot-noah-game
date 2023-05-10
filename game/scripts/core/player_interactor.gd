@@ -6,7 +6,6 @@ var closest_interactable: Interactable
 
 func _ready():
 	controller = player
-	print(controller)
 	
 func _physics_process(delta: float) -> void:
 	update_closest_interactable()

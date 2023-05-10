@@ -35,12 +35,13 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			# TODO: Do some generic Interaction here
 			
 		item_data.InteractionType.PICK_UP:
-			print("%s picked up %s" % [interactor, $Interactable])
-			if interactor.controller:
-				var item_picked_up = interactor.controller.pick_up_world_item(self)
+			# Check that controller exists and has an InventoryData
+			if interactor.controller and interactor.controller.inventory_data:
+				var controller_inventory: InventoryData = interactor.controller.inventory_data
+				var is_picked_up: bool = add_item_to_inventory(controller_inventory)
 				
 				# When item is picked up we want to remove it from the screen
-				if item_picked_up:
+				if is_picked_up:
 					queue_free()
 				
 		item_data.InteractionType.EQUIP:
@@ -50,5 +51,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			if interactor.controller:
 				interactor.controller.equip_world_item(self)
 	
-	
+## Add the current WorldItem to specified inventory
+func add_item_to_inventory(inventory_data: InventoryData) -> bool:
+	var slot_data: SlotData = SlotData.new().create_single_slot_data(self.item_data)
+	return inventory_data.insert_slot_data(slot_data)
 	
