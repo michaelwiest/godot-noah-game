@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://yvhrt3r6aggi"]
+[gd_scene load_steps=9 format=3 uid="uid://dptlsd0577fey"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_6nayg"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="3_q1jv1"]
 [ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="3_wuvgd"]
+[ext_resource type="PackedScene" uid="uid://drimekthmngtx" path="res://scenes/core/boxes/player_interactor.tscn" id="5_k3e6i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5fwv"]
 resource_local_to_scene = true
@@ -12,6 +13,9 @@ shader_parameter/show = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u3kh"]
 size = Vector2(12, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcd7g"]
+radius = 23.0
 
 [node name="Player" instance=ExtResource("1_6nayg")]
 y_sort_enabled = true
@@ -39,4 +43,12 @@ current_health = 5
 [node name="WeaponForceTimer" type="Timer" parent="." index="5"]
 wait_time = 0.1
 
+[node name="PlayerInteractor" parent="." index="6" node_paths=PackedStringArray("player") instance=ExtResource("5_k3e6i")]
+player = NodePath("..")
+
+[node name="CollisionShape2D" parent="PlayerInteractor" index="0"]
+shape = SubResource("CircleShape2D_vcd7g")
+
 [connection signal="timeout" from="WeaponForceTimer" to="." method="_on_weapon_force_timer_timeout"]
+
+[editable path="PlayerInteractor"]

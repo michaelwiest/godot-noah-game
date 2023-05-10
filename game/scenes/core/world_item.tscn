@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwwmorg4pq0c8"]
+
+[ext_resource type="Script" path="res://scripts/core/world_item.gd" id="1_jsomt"]
+[ext_resource type="Texture2D" uid="uid://drj0wndlf8c0l" path="res://assets/items/info_icon.png" id="1_kjy5r"]
+[ext_resource type="Texture2D" uid="uid://dhem5v4ow1635" path="res://assets/environment/small_shadow.png" id="1_t3imp"]
+[ext_resource type="PackedScene" uid="uid://8pmt3qbpu5qa" path="res://scenes/core/boxes/interactable.tscn" id="3_drggj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgs8u"]
+radius = 29.0172
+
+[node name="WorldItems" type="Node2D"]
+script = ExtResource("1_jsomt")
+
+[node name="ItemSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("1_t3imp")
+
+[node name="InfoSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_kjy5r")
+
+[node name="Interactable" parent="." instance=ExtResource("3_drggj")]
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+shape = SubResource("CircleShape2D_vgs8u")
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]

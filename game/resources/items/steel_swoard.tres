@@ -13,3 +13,4 @@ name = "Steel Sword"
 description = "Mighty Sword"
 stackable = false
 texture = SubResource("AtlasTexture_nke2n")
+interaction_type = 3

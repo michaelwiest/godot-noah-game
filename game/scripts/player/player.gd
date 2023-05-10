@@ -48,3 +48,7 @@ func _on_weapon_force_timer_timeout():
 func inventory_input() -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
+
+## Adds world_item to equipment slot and instances a Weapon for the player to use
+func equip_world_item(world_item: WorldItem) -> void:
+	pass

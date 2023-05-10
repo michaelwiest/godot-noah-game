@@ -13,3 +13,4 @@ name = "Apple"
 description = "The forbidden fruit"
 stackable = true
 texture = SubResource("AtlasTexture_f64j8")
+interaction_type = 1
