@@ -1,10 +1,8 @@
-
 [gd_scene load_steps=19 format=3 uid="uid://dcnfrlh0vb6rv"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://dptlsd0577fey" path="res://scenes/player/player.tscn" id="1_jgtet"]
-[ext_resource type="Texture2D" uid="uid://c2y2punqrg18q" path="res://assets/environment/sand.png" id="2_m1ov6"]
-[ext_resource type="PackedScene" uid="uid://0q6qet3iwckw" path="res://scenes/weapons/stick/stick.tscn" id="4_0iofd"]
+[ext_resource type="Texture2D" uid="uid://dba8mndptc85g" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
 [ext_resource type="PackedScene" uid="uid://sdlq3hkgnbjg" path="res://scenes/weapons/red_weapon/red_weapon.tscn" id="6_fw135"]

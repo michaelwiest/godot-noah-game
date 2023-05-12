@@ -2,12 +2,10 @@ extends Node2D
 class_name Weapon
 
 @export var weapon_data: WeaponData
-@export var combo_window: float = 0.2  # Seconds
 @onready var active_attack_index: int = 0
 @onready var attacks: Array[Attack]
 @onready var attacking: bool = false
 @onready var combo_timer = $ComboTimer
-@export var attack_scenes: Array[PackedScene] = []
 
 		
 func _increment_attack_index():
@@ -17,7 +15,7 @@ func _create_attacks():
 	# Helper function to attach attacks to a weapon given 
 	# the supplied packed scenes
 	for attack_index in weapon_data.attack_indices:
-		var attack: Attack = attack_scenes[attack_index].instantiate()
+		var attack: Attack = weapon_data.attack_scenes[attack_index].instantiate()
 		add_child(attack)
 		attack.attack_apply_hit_signal.connect(apply_hit)
 		attack.attack_end_signal.connect(attack_end)
@@ -27,7 +25,6 @@ func _create_attacks():
 
 
 func _ready():
-	assert (weapon_data.attack_indices.max() < len(attack_scenes))
 	_create_attacks()
 	
 	
@@ -61,7 +58,7 @@ func attack_start():
 
 func attack_end():
 	attacking = false
-	combo_timer.start(combo_window)
+	combo_timer.start(weapon_data.combo_window)
 	
 
 

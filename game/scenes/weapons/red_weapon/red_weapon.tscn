@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://sdlq3hkgnbjg"]
+[gd_scene load_steps=3 format=3 uid="uid://sdlq3hkgnbjg"]
 
 [ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="1_d4oin"]
-[ext_resource type="PackedScene" uid="uid://bssovbqyoeldx" path="res://scenes/weapons/red_weapon/red_attack_1.tscn" id="2_6unqi"]
 [ext_resource type="Resource" uid="uid://b3skk2yy88spl" path="res://scenes/weapons/red_weapon/red_weapon.tres" id="2_li1oh"]
-[ext_resource type="PackedScene" uid="uid://b1h45bvnthjkc" path="res://scenes/weapons/red_weapon/red_attack_2.tscn" id="3_e2hoa"]
 
 [node name="RedWeapon" instance=ExtResource("1_d4oin")]
 weapon_data = ExtResource("2_li1oh")
-combo_window = 0.4
-attack_scenes = Array[PackedScene]([ExtResource("2_6unqi"), ExtResource("3_e2hoa")])
