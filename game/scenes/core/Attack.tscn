@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct2gh4im6ec2l"]
+
+[ext_resource type="Script" path="res://scripts/core/Attack.gd" id="1_bgq7m"]
+[ext_resource type="PackedScene" uid="uid://uieln8qom7qa" path="res://scenes/core/boxes/hitbox.tscn" id="1_pcyw6"]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_bgq7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="hitbox" parent="Marker2D" instance=ExtResource("1_pcyw6")]
+
+[connection signal="apply_hit_signal" from="Marker2D/hitbox" to="." method="_on_hitbox_apply_hit_signal"]

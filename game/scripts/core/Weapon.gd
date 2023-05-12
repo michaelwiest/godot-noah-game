@@ -1,67 +1,67 @@
-extends Node
+extends Node2D
 class_name Weapon
 
-@export var force: float
-@export var damage: float
-@export var stops_movment: bool 
-@export var player_force: float
-# Need something here to denote when you can equip it. 
-@export var equipable_slots: int
-@onready var held_sprite: Sprite2D = $HeldSprite
-@onready var use_sprite: Sprite2D = $UseSprite
-@onready var UseAnimation: AnimationPlayer = $UseAnimation
-@onready var held_hitbox: HitBox = $HeldHitbox
-@onready var use_hitbox: HitBox = $Marker2D/UseHitbox
-var movement_stopped: bool = false
+@export var weapon_data: WeaponData
+@onready var active_attack_index: int = 0
+@onready var attacks: Array[Attack]
+@onready var attacking: bool = false
+@onready var combo_timer = $ComboTimer
 
-# Called when the node enters the scene tree for the first time.
+		
+func _increment_attack_index():
+	active_attack_index = (active_attack_index + 1) % len(attacks)
+
+func _create_attacks():
+	# Helper function to attach attacks to a weapon given 
+	# the supplied packed scenes
+	for attack_index in weapon_data.attack_indices:
+		var attack: Attack = weapon_data.attack_scenes[attack_index].instantiate()
+		add_child(attack)
+		attack.attack_apply_hit_signal.connect(apply_hit)
+		attack.attack_end_signal.connect(attack_end)
+		attack.attack_start_signal.connect(attack_start)
+		attack.disable()
+		attacks.append(attack)
+
+
 func _ready():
-	use_sprite.visible = false
-	use_hitbox.disable()
+	_create_attacks()
+	
+	
+func flip_h():
+	# Horizontally flip the whole weapon.
+	scale = Vector2(scale[0] * -1, 1)
+	
+func use():
+	if not attacking:
+		attacks[active_attack_index].use()
+		_increment_attack_index()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-#
-#func use():
-#	UseAnimation.play("use")
-#
 
 func equip(equipment_slot):
-	# Something in here to connect the move signal to the player.
 	pass
 
-func use_animation_started():
-	if stops_movment:
-		movement_stopped = true
-	held_sprite.visible = false
-	use_sprite.visible = true
-	held_hitbox.disable()
-	use_hitbox.enable()
-	emit_signal("move_player", player_force)
+func apply_hit(entity: Entity):
+	apply_damage(entity)
+	apply_knockback(entity)
+	
+	
+func apply_damage(entity: Entity):
+	entity.stats.hurt_amount(weapon_data.damage)
+
+
+func apply_knockback(entity: Entity):
+	entity.apply_knockback(position, weapon_data.force)
+
+func attack_start():
+	attacking = true
+
+func attack_end():
+	attacking = false
+	combo_timer.start(weapon_data.combo_window)
 	
 
 
-func use_animation_finished():
-	if stops_movment:
-		movement_stopped = false
-	use_sprite.visible = false
-	held_sprite.visible = true
-	held_hitbox.enable()
-	use_hitbox.disable()
-
-signal move_player(player_force)
-
-# Signals from the underlying hitboxes that denote which entity they hit.
-func _on_held_hitbox_apply_damage_signal(entity: Entity):
-	entity.stats.hurt_amount(damage)
-
-func _on_use_hitbox_apply_damage_signal(entity: Entity):
-	entity.stats.hurt_amount(damage)
-
-func _on_held_hitbox_apply_knockback_signal(entity: Entity):
-	entity.apply_knockback(self)
-
-func _on_use_hitbox_apply_knockback_signal(entity: Entity):
-	entity.apply_knockback(self)
+func _on_combo_timer_timeout():
+	if !attacking:
+		active_attack_index = 0

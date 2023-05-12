@@ -26,21 +26,16 @@ func _on_stats_no_health():
 
 
 func _on_hurtbox_area_entered(area: HitBox):
-	area.apply_damage(self)
-	area.apply_knockback(self)
+	area.apply_hit(self)
 	effect_player.play("hit")
-	
-	
-#	velocity += compute_knockback(area)
 
-
-func compute_knockback(weapon: Weapon):
-	var knockback_direction: Vector2 = weapon.global_position.direction_to(global_position)
-	var knockback_force: Vector2 = knockback_direction * weapon.force / mass
+func compute_knockback(weapon_position: Vector2, force: float):
+	var knockback_direction: Vector2 = global_position.direction_to(weapon_position)
+	var knockback_force: Vector2 = knockback_direction * force / mass
 	return knockback_force
 
-func apply_knockback(weapon: Weapon):
-	velocity += compute_knockback(weapon)
+func apply_knockback(weapon_position: Vector2, force: float):
+	velocity += compute_knockback(weapon_position, force)
 	
 
 func _physics_process(delta):

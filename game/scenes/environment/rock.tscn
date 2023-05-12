@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci1ofrh1tfntn"]
 
-[ext_resource type="Texture2D" uid="uid://bv002v4vh78mx" path="res://assets/environment/rock.png" id="1_dk76p"]
+[ext_resource type="Texture2D" uid="uid://ctfol6xnfwqtr" path="res://assets/environment/rock.png" id="1_dk76p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cexma"]
 radius = 6.0
@@ -12,6 +12,8 @@ height = 22.0
 texture = ExtResource("1_dk76p")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 4)
