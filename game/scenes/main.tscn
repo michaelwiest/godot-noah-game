@@ -1,21 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcnfrlh0vb6rv"]
+[gd_scene load_steps=20 format=3 uid="uid://ckd8m81b07rob"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://dptlsd0577fey" path="res://scenes/player/player.tscn" id="1_jgtet"]
-[ext_resource type="Texture2D" uid="uid://dba8mndptc85g" path="res://assets/environment/sand.png" id="2_m1ov6"]
+[ext_resource type="Texture2D" uid="uid://dnawjl0yf3n1p" path="res://assets/environment/sand.png" id="2_m1ov6"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="4_s65n4"]
 [ext_resource type="Resource" uid="uid://ciencntirrh6" path="res://resources/test_inventory.tres" id="4_wssn3"]
-[ext_resource type="PackedScene" uid="uid://sdlq3hkgnbjg" path="res://scenes/weapons/red_weapon/red_weapon.tscn" id="6_fw135"]
 [ext_resource type="PackedScene" uid="uid://dl27yhnnxxnq4" path="res://scenes/enemies/crab/Crab.tscn" id="6_npkop"]
+[ext_resource type="Resource" uid="uid://b3skk2yy88spl" path="res://resources/weapons/red_weapon.tres" id="6_pmouw"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_interface.gd" id="7_04jhi"]
 [ext_resource type="PackedScene" uid="uid://bu04ksinencd4" path="res://scenes/inventory/inventory.tscn" id="7_q1wkd"]
 [ext_resource type="PackedScene" uid="uid://ci1ofrh1tfntn" path="res://scenes/environment/rock.tscn" id="8_l8mwe"]
-[ext_resource type="PackedScene" uid="uid://cwwmorg4pq0c8" path="res://scenes/core/world_item.tscn" id="9_qowr7"]
+[ext_resource type="PackedScene" uid="uid://bbag3plra4g3v" path="res://scenes/world_items/world_item.tscn" id="9_qowr7"]
 [ext_resource type="Resource" uid="uid://bv8jejavbd6k6" path="res://resources/items/apple.tres" id="10_5eq8h"]
 [ext_resource type="PackedScene" uid="uid://dxh4j6ubqdrc8" path="res://scenes/inventory/slot.tscn" id="10_gmakw"]
 [ext_resource type="Resource" uid="uid://dse1ehyjnosyv" path="res://resources/items/blue_book.tres" id="11_hxiq7"]
 [ext_resource type="Resource" uid="uid://c2o0b51pu6int" path="res://resources/items/bow.tres" id="12_3yxap"]
 [ext_resource type="Resource" uid="uid://dikb6fhl7eps4" path="res://resources/items/scroll.tres" id="13_i1whx"]
+[ext_resource type="PackedScene" uid="uid://wpumqqqfe1gm" path="res://scenes/world_items/weapon_world_items.tscn" id="13_wujjo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfsmm"]
 resource_local_to_scene = true
@@ -48,8 +49,6 @@ shape = SubResource("CircleShape2D_h6d5h")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="RedWeapon" parent="Player" instance=ExtResource("6_fw135")]
-
 [node name="Crab" parent="." instance=ExtResource("6_npkop")]
 
 [node name="Rock" parent="." instance=ExtResource("8_l8mwe")]
@@ -70,6 +69,10 @@ item_data = ExtResource("12_3yxap")
 [node name="WorldItems4" parent="." instance=ExtResource("9_qowr7")]
 position = Vector2(-140, -72)
 item_data = ExtResource("13_i1whx")
+
+[node name="WeaponWorldsItems" parent="." instance=ExtResource("13_wujjo")]
+position = Vector2(-123, -1)
+item_data = ExtResource("6_pmouw")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

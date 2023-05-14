@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bssovbqyoeldx"]
 
 [ext_resource type="Script" path="res://scripts/core/Attack.gd" id="1_2p8cm"]
-[ext_resource type="Texture2D" uid="uid://cbwx1uortr5wk" path="res://assets/weapons/red_weapon/red_weapon_2.png" id="2_8qlta"]
+[ext_resource type="Texture2D" uid="uid://c11amw342hs53" path="res://assets/weapons/red_weapon/red_weapon_2.png" id="2_8qlta"]
 [ext_resource type="PackedScene" uid="uid://uieln8qom7qa" path="res://scenes/core/boxes/hitbox.tscn" id="3_ypodr"]
 
 [sub_resource type="Animation" id="Animation_m8i7g"]

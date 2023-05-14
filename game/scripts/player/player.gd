@@ -8,6 +8,7 @@ signal toggle_inventory
 @onready var last_direction: Vector2
 @onready var weapon_force: float = 0
 @onready var weapon_timer = $WeaponForceTimer
+@onready var weapon: Weapon = $Weapon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -50,5 +51,10 @@ func inventory_input() -> void:
 		toggle_inventory.emit()
 
 ## Adds world_item to equipment slot and instances a Weapon for the player to use
-func equip_world_item(world_item: WorldItem) -> void:
+func equip_weapon_world_item(weapon_world_item: WeaponWorldItem) -> void:
+	#var red_weapon = load("res://scenes/weapons/red_weapon/red_weapon.tscn")
+	#weapon = red_weapon.instantiate()
+	#print(weapon_world_item.item_data)
+	#weapon.weapon_data = weapon_world_item.item_data as WeaponData
+	#print (weapon.weapon_data)
 	pass

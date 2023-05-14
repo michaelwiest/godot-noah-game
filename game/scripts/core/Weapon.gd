@@ -14,6 +14,9 @@ func _increment_attack_index():
 func _create_attacks():
 	# Helper function to attach attacks to a weapon given 
 	# the supplied packed scenes
+	if not weapon_data:
+		return
+		
 	for attack_index in weapon_data.attack_indices:
 		var attack: Attack = weapon_data.attack_scenes[attack_index].instantiate()
 		add_child(attack)
@@ -33,7 +36,9 @@ func flip_h():
 	scale = Vector2(scale[0] * -1, 1)
 	
 func use():
-	if not attacking:
+	# Check if not attacking and attack index is not out of bounds
+	# Gaurd against attacks of size 0 
+	if not attacking and active_attack_index < len(attacks):
 		attacks[active_attack_index].use()
 		_increment_attack_index()
 
