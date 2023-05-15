@@ -50,11 +50,19 @@ func inventory_input() -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
 
-## Adds world_item to equipment slot and instances a Weapon for the player to use
-func equip_weapon_world_item(weapon_world_item: WeaponWorldItem) -> void:
-	#var red_weapon = load("res://scenes/weapons/red_weapon/red_weapon.tscn")
-	#weapon = red_weapon.instantiate()
-	#print(weapon_world_item.item_data)
-	#weapon.weapon_data = weapon_world_item.item_data as WeaponData
-	#print (weapon.weapon_data)
-	pass
+func drop_current_weapon(drop_position: Vector2) -> void:
+	# Make sure a weapon has been picked up 
+	if weapon.weapon_data:
+		# Create WeaponWorlditem to drop in the world at the current player location
+		var weapon_item_scene: PackedScene = load("res://scenes/world_items/weapon_world_item.tscn")
+		var weapon_item_node: WeaponWorldItem = weapon_item_scene.instantiate()
+		weapon_item_node.item_data = weapon.weapon_data
+		
+		# Set drop position
+		weapon_item_node.position = drop_position
+		
+		# Add WeaponWorldItem to the scene tree
+		get_tree().get_root().add_child(weapon_item_node)
+		
+		# Remove the existing weapon from the player's node tree
+		weapon.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckd8m81b07rob"]
+[gd_scene load_steps=21 format=3]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_cky74"]
 [ext_resource type="PackedScene" uid="uid://dptlsd0577fey" path="res://scenes/player/player.tscn" id="1_jgtet"]
@@ -16,7 +16,8 @@
 [ext_resource type="Resource" uid="uid://dse1ehyjnosyv" path="res://resources/items/blue_book.tres" id="11_hxiq7"]
 [ext_resource type="Resource" uid="uid://c2o0b51pu6int" path="res://resources/items/bow.tres" id="12_3yxap"]
 [ext_resource type="Resource" uid="uid://dikb6fhl7eps4" path="res://resources/items/scroll.tres" id="13_i1whx"]
-[ext_resource type="PackedScene" uid="uid://wpumqqqfe1gm" path="res://scenes/world_items/weapon_world_items.tscn" id="13_wujjo"]
+[ext_resource type="PackedScene" uid="uid://wpumqqqfe1gm" path="res://scenes/world_items/weapon_world_item.tscn" id="13_wujjo"]
+[ext_resource type="Resource" uid="uid://crsgt63e61pqr" path="res://resources/weapons/blue_weapon.tres" id="15_mx7og"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfsmm"]
 resource_local_to_scene = true
@@ -73,6 +74,10 @@ item_data = ExtResource("13_i1whx")
 [node name="WeaponWorldsItems" parent="." instance=ExtResource("13_wujjo")]
 position = Vector2(-123, -1)
 item_data = ExtResource("6_pmouw")
+
+[node name="WeaponWorldsItems2" parent="." instance=ExtResource("13_wujjo")]
+position = Vector2(-173, -17)
+item_data = ExtResource("15_mx7og")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

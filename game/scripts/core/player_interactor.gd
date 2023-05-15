@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		if closest_interactable:
+		if is_instance_valid(closest_interactable):
 			interact(closest_interactable)
 
 func _on_area_exited(area: Interactable) -> void:
