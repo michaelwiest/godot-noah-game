@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dbhhsmarpoaeu"]
+
+[ext_resource type="Script" path="res://scripts/inventory/weapon_data.gd" id="1_um4k4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sybcd"]
+load_path = "res://.godot/imported/blue_weapon.png-198ce8840d629b9c400d43cf33c7d496.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufs37"]
+atlas = SubResource("CompressedTexture2D_sybcd")
+region = Rect2(11, 1, 8, 28)
+
+[resource]
+script = ExtResource("1_um4k4")
+force = 100.0
+damage = 1000.0
+stops_movment = true
+equipment_slot = 2
+attack_indices = Array[int]([])
+attack_scenes = Array[PackedScene]([])
+combo_window = 0.2
+name = ""
+description = ""
+stackable = false
+texture = SubResource("AtlasTexture_ufs37")
+interaction_type = 3

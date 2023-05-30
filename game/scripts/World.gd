@@ -6,7 +6,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	inventory_interface.set_player_inventory_data(player.inventory_data)
+	inventory_interface.set_item_inventory_data(player.item_inventory_data)
+	inventory_interface.set_weapon_inventory_data(player.weapon_inventory_data)
+	inventory_interface.set_equipment_inventory_data(player.equipment_inventory_data)
 	player.toggle_inventory.connect(toggle_inventory_interface)
 
 

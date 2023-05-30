@@ -36,8 +36,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			
 		item_data.InteractionType.PICK_UP:
 			# Check that controller exists and has an InventoryData
-			if interactor.controller and interactor.controller.inventory_data:
-				var controller_inventory: InventoryData = interactor.controller.inventory_data
+			if interactor.controller and interactor.controller.item_inventory_data:
+				var controller_inventory: InventoryData = interactor.controller.item_inventory_data
 				var is_picked_up: bool = add_item_to_inventory(controller_inventory)
 				
 				# When item is picked up we want to remove it from the screen

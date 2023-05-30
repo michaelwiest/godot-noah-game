@@ -3,7 +3,9 @@ class_name Player
 
 signal toggle_inventory
 
-@export var inventory_data: InventoryData
+@export var item_inventory_data: InventoryData
+@export var weapon_inventory_data: WeaponInventoryData
+@export var equipment_inventory_data: EquipmentInventoryData
 
 @onready var last_direction: Vector2
 @onready var weapon_force: float = 0
