@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dptlsd0577fey"]
+[gd_scene load_steps=10 format=3 uid="uid://dptlsd0577fey"]
 
 [ext_resource type="PackedScene" uid="uid://djtlf53p51ak8" path="res://scenes/core/Entity.tscn" id="1_6nayg"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wyaxs"]
 [ext_resource type="Shader" path="res://shaders/blink_white.gdshader" id="3_q1jv1"]
 [ext_resource type="Texture2D" uid="uid://dfsx58t5c05ai" path="res://icon.svg" id="3_wuvgd"]
 [ext_resource type="PackedScene" uid="uid://drimekthmngtx" path="res://scenes/core/boxes/player_interactor.tscn" id="5_k3e6i"]
+[ext_resource type="PackedScene" uid="uid://dkkqahsll6qx2" path="res://scenes/weapons/red_weapon/red_weapon.tscn" id="6_pm80a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5fwv"]
 resource_local_to_scene = true
@@ -50,6 +51,9 @@ player = NodePath("..")
 
 [node name="CollisionShape2D" parent="PlayerInteractor" index="0"]
 shape = SubResource("CircleShape2D_vcd7g")
+
+[node name="Weapon" parent="." index="7" instance=ExtResource("6_pm80a")]
+weapon_data = null
 
 [connection signal="timeout" from="WeaponForceTimer" to="." method="_on_weapon_force_timer_timeout"]
 

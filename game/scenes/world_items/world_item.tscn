@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwwmorg4pq0c8"]
+[gd_scene load_steps=6 format=3 uid="uid://bbag3plra4g3v"]
 
-[ext_resource type="Script" path="res://scripts/core/world_item.gd" id="1_jsomt"]
+[ext_resource type="Script" path="res://scripts/world_items/world_item.gd" id="1_4sswa"]
 [ext_resource type="Texture2D" uid="uid://drj0wndlf8c0l" path="res://assets/items/info_icon.png" id="1_kjy5r"]
 [ext_resource type="Texture2D" uid="uid://dhem5v4ow1635" path="res://assets/environment/small_shadow.png" id="1_t3imp"]
 [ext_resource type="PackedScene" uid="uid://8pmt3qbpu5qa" path="res://scenes/core/boxes/interactable.tscn" id="3_drggj"]
@@ -9,7 +9,7 @@
 radius = 29.0172
 
 [node name="WorldItems" type="Node2D"]
-script = ExtResource("1_jsomt")
+script = ExtResource("1_4sswa")
 
 [node name="ItemSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

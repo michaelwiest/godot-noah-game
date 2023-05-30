@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://sdlq3hkgnbjg"]
+[gd_scene load_steps=3 format=3 uid="uid://dkkqahsll6qx2"]
 
 [ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="1_d4oin"]
-[ext_resource type="Resource" uid="uid://b3skk2yy88spl" path="res://scenes/weapons/red_weapon/red_weapon.tres" id="2_li1oh"]
+[ext_resource type="Resource" uid="uid://b3skk2yy88spl" path="res://resources/weapons/red_weapon.tres" id="2_au10e"]
 
 [node name="RedWeapon" instance=ExtResource("1_d4oin")]
-weapon_data = ExtResource("2_li1oh")
+weapon_data = ExtResource("2_au10e")

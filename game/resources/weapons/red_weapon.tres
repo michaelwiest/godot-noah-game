@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bssovbqyoeldx" path="res://scenes/weapons/red_weapon/red_attack_1.tscn" id="1_lmvbw"]
 [ext_resource type="PackedScene" uid="uid://b1h45bvnthjkc" path="res://scenes/weapons/red_weapon/red_attack_2.tscn" id="2_6caol"]
 [ext_resource type="Script" path="res://scripts/inventory/weapon_data.gd" id="3_uq2mn"]
-[ext_resource type="Texture2D" uid="uid://bh86ekdgsn3l" path="res://assets/weapons/red_weapon/red_weapon_2.png" id="4_sol84"]
+[ext_resource type="Texture2D" uid="uid://c11amw342hs53" path="res://assets/weapons/red_weapon/red_weapon_2.png" id="4_sol84"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk4nw"]
 atlas = ExtResource("4_sol84")
