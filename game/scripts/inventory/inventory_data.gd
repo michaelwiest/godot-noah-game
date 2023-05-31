@@ -41,7 +41,7 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 		slot_data = slot_data_list[index]
 		# Dropping on a slot that is empty
 		if not slot_data:
-			slot_data_list[index]  = grabbed_slot_data.create_single_slot_data()
+			slot_data_list[index] = grabbed_slot_data.create_single_slot_data()
 		# Dropping on a non empty slot, check if it can be stacked
 		elif slot_data.can_merge_with(grabbed_slot_data):
 			slot_data.fully_merge_with(grabbed_slot_data.create_single_slot_data())
@@ -71,3 +71,10 @@ func insert_slot_data(new_slot_data: SlotData) -> bool:
 			inventory_updated.emit(self)
 			return true
 	return false
+
+func replace_slot_data(new_slot_data: SlotData, index: int) -> void:
+	if index >= 0 and index < len(slot_data_list):
+		slot_data_list[index] = new_slot_data
+		inventory_updated.emit(self)
+		
+			

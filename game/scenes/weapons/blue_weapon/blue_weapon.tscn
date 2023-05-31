@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxnkp3ygdsm84"]
 
 [ext_resource type="PackedScene" uid="uid://coq3fu840y45p" path="res://scenes/core/Weapon.tscn" id="1_5iyp6"]
-[ext_resource type="Resource" uid="uid://crsgt63e61pqr" path="res://resources/weapons/blue_weapon.tres" id="2_w40em"]
+[ext_resource type="Resource" uid="uid://crsgt63e61pqr" path="res://scenes/weapons/blue_weapon/blue_weapon.tres" id="2_w40em"]
 
 [node name="BlueWeapon" instance=ExtResource("1_5iyp6")]
 weapon_data = ExtResource("2_w40em")

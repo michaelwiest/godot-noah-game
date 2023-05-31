@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="WeaponInventoryData" load_steps=5 format=3 uid="uid://c5mxm8m2q1o0k"]
 
 [ext_resource type="Script" path="res://scripts/inventory/weapon_inventory_data.gd" id="1_suon1"]
+[ext_resource type="Resource" uid="uid://b3skk2yy88spl" path="res://resources/weapons/red_weapon.tres" id="2_5igxa"]
 [ext_resource type="Script" path="res://scripts/inventory/slot_data.gd" id="2_nykdo"]
-[ext_resource type="Resource" uid="uid://dbhhsmarpoaeu" path="res://resources/weapons/blue_weapon.tres" id="2_t7d8p"]
 
-[sub_resource type="Resource" id="Resource_qgf3e"]
+[sub_resource type="Resource" id="Resource_35bph"]
 script = ExtResource("2_nykdo")
-item_data = ExtResource("2_t7d8p")
+item_data = ExtResource("2_5igxa")
 quantity = 1
 
 [resource]
 script = ExtResource("1_suon1")
-slot_data_list = Array[ExtResource("2_nykdo")]([SubResource("Resource_qgf3e")])
+slot_data_list = Array[ExtResource("2_nykdo")]([SubResource("Resource_35bph")])

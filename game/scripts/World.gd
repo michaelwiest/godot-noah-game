@@ -15,7 +15,7 @@ func _ready():
 # Hack for now before having equipment associated with the player
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		if player.weapon.weapon_data:
+		if is_instance_valid(player.weapon) and player.weapon and player.weapon.weapon_data:
 			player.weapon.use()
 
 func toggle_inventory_interface() -> void:
