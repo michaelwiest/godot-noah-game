@@ -10,7 +10,7 @@ signal toggle_inventory
 @onready var last_direction: Vector2
 @onready var weapon_force: float = 0
 @onready var weapon_timer = $WeaponForceTimer
-@onready var weapon: Weapon = $Weapon : set = _set_weapon
+@onready var weapon: Weapon = $Weapon
 
 func _ready():
 	if (
@@ -71,18 +71,16 @@ func update_weapon(inventory_data: WeaponInventoryData):
 		set_current_weapon(inventory_data.slot_data_list[0].item_data.name)
 	else:
 		self.weapon.queue_free()
-		
-func _set_weapon(new_weapon: Weapon) -> void:
-	weapon = new_weapon
+
 
 func set_current_weapon(weapon_name: String) -> void:
 	var new_weapon: Weapon = Weapon.create_weapon(weapon_name)
-	var tmp = self.weapon
+	var prev_weapon = self.weapon
 	self.weapon = new_weapon
 	self.add_child(self.weapon)
 	
-	if is_instance_valid(tmp) and tmp:
-		tmp.queue_free()
+	if is_instance_valid(prev_weapon) and prev_weapon:
+		prev_weapon.queue_free()
 		
 
 func drop_current_weapon(drop_position: Vector2) -> void:

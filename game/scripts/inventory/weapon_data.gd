@@ -18,5 +18,4 @@ enum EquipmentSlot {
 # TODO: Investigate if Resources have a _ready() function
 # When printing in this function it never displays anything to the console
 func _ready():
-	print("%s: %s %s" % [name, attack_indices.max() , len(attack_scenes)])
 	assert (attack_indices.max() < len(attack_scenes))

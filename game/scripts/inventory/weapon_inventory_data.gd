@@ -1,7 +1,6 @@
 extends InventoryData
 class_name WeaponInventoryData
 
-signal weapon_updated()
 
 func drop_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	# Attempt to cast grabbed_slot_data to WeaponData

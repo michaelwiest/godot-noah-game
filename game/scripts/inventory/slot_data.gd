@@ -13,7 +13,6 @@ func set_quantity(value):
 		push_error("%s is not stackable, setting quantity to 1" % item_data.name)
 	
 func can_merge_with(other_slot_data: SlotData) -> bool:
-	print("%s == %s" % [item_data, other_slot_data.item_data])
 	return (
 		item_data == other_slot_data.item_data
 		and item_data.stackable
