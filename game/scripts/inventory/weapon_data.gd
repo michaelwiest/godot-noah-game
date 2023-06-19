@@ -15,5 +15,7 @@ enum EquipmentSlot {
 @export var attack_scenes: Array[PackedScene] = []
 @export var combo_window: float = 0.2  # Seconds
 
+# TODO: Investigate if Resources have a _ready() function
+# When printing in this function it never displays anything to the console
 func _ready():
 	assert (attack_indices.max() < len(attack_scenes))

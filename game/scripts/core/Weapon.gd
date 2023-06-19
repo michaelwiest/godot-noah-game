@@ -7,13 +7,24 @@ class_name Weapon
 @onready var attacking: bool = false
 @onready var combo_timer = $ComboTimer
 
-		
+static func create_weapon(weapon_name: String) -> Weapon:
+	print("res://scenes/weapons/%s/%s.tscn" % [weapon_name, weapon_name])
+	var weapon_scene: PackedScene = load("res://scenes/weapons/%s/%s.tscn" % [weapon_name, weapon_name])
+	var weapon_data: WeaponData = load("res://resources/weapons/%s.tres" % weapon_name)
+	var new_weapon: Weapon = weapon_scene.instantiate()
+	new_weapon.weapon_data = weapon_data as WeaponData
+	new_weapon.name = "Weapon"
+	return new_weapon
+
 func _increment_attack_index():
 	active_attack_index = (active_attack_index + 1) % len(attacks)
 
 func _create_attacks():
 	# Helper function to attach attacks to a weapon given 
 	# the supplied packed scenes
+	if not weapon_data:
+		return
+		
 	for attack_index in weapon_data.attack_indices:
 		var attack: Attack = weapon_data.attack_scenes[attack_index].instantiate()
 		add_child(attack)
@@ -33,7 +44,9 @@ func flip_h():
 	scale = Vector2(scale[0] * -1, 1)
 	
 func use():
-	if not attacking:
+	# Check if not attacking and attack index is not out of bounds
+	# Gaurd against attacks of size 0 
+	if not attacking and active_attack_index < len(attacks):
 		attacks[active_attack_index].use()
 		_increment_attack_index()
 

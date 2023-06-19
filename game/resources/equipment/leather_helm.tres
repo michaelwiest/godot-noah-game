@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=4 format=3 uid="uid://u0h63mur1m4t"]
+
+[ext_resource type="Script" path="res://scripts/inventory/equipment_data.gd" id="1_d3s6y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6p5rl"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-3d01a993310e5f0e80b43d9f4788a5cf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82dei"]
+atlas = SubResource("CompressedTexture2D_6p5rl")
+region = Rect2(70, 230, 20, 20)
+
+[resource]
+script = ExtResource("1_d3s6y")
+defense = 10.0
+health = 10.0
+name = "Leather Helm"
+description = "A leather helmet"
+stackable = false
+texture = SubResource("AtlasTexture_82dei")
+interaction_type = 3

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://crsgt63e61pqr"]
+
+[ext_resource type="PackedScene" uid="uid://bcjs7xagtint3" path="res://scenes/weapons/blue_weapon/blue_attack_1.tscn" id="1_7it2h"]
+[ext_resource type="Script" path="res://scripts/inventory/weapon_data.gd" id="1_um4k4"]
+[ext_resource type="Texture2D" uid="uid://1xm0pl7lmctl" path="res://assets/weapons/blue_weapon/blue_weapon.png" id="3_nfqi6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx148"]
+atlas = ExtResource("3_nfqi6")
+region = Rect2(48, 3, 27, 18)
+
+[resource]
+script = ExtResource("1_um4k4")
+force = 100.0
+damage = 5.0
+stops_movment = false
+equipment_slot = 0
+attack_indices = Array[int]([0])
+attack_scenes = Array[PackedScene]([ExtResource("1_7it2h")])
+combo_window = 0.2
+name = "blue_weapon"
+description = ""
+stackable = false
+texture = SubResource("AtlasTexture_nx148")
+interaction_type = 3

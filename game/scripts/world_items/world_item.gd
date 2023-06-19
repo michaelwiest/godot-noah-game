@@ -36,8 +36,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			
 		item_data.InteractionType.PICK_UP:
 			# Check that controller exists and has an InventoryData
-			if interactor.controller and interactor.controller.inventory_data:
-				var controller_inventory: InventoryData = interactor.controller.inventory_data
+			if interactor.controller and interactor.controller.item_inventory_data:
+				var controller_inventory: InventoryData = interactor.controller.item_inventory_data
 				var is_picked_up: bool = add_item_to_inventory(controller_inventory)
 				
 				# When item is picked up we want to remove it from the screen
@@ -46,13 +46,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				
 		item_data.InteractionType.EQUIP:
 			print("%s Equipped up %s" % [interactor, $Interactable])
-			
-			# TODO: This is a placeholder to allow the player to equip world items
-			if interactor.controller:
-				interactor.controller.equip_world_item(self)
 	
 ## Add the current WorldItem to specified inventory
 func add_item_to_inventory(inventory_data: InventoryData) -> bool:
 	var slot_data: SlotData = SlotData.new().create_single_slot_data(self.item_data)
 	return inventory_data.insert_slot_data(slot_data)
-	
+
+## Add any clean up actions required to remove item from world
+func remove_item_from_world(interactor: Interactor) -> void:
+	self.queue_free()
